@@ -45,9 +45,9 @@ public class DeapthFirstIterator implements Iterator<String> {
 	private void advance() {
 		Iterator<String> neighbors = this.stack.peek();
 		do {
-			while (!neighbors.hasNext()) {
+			while (!neighbors.hasNext()) { // No more nodes -> back out a level
 				this.stack.pop();
-				if (this.stack.isEmpty()) { 
+				if (this.stack.isEmpty()) { // All done!
 					this.next = null;
 					return;
 				}

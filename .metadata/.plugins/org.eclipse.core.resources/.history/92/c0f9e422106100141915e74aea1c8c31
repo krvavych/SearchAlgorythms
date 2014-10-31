@@ -30,6 +30,7 @@ public class BreadthFirstIterator implements Iterator<String> {
 
 	@Override
 	public String next() {
+		// removes from front of queue
 		String next = queue.remove();
 		for (String neighbor : this.graph.getNeighbors(next)) {
 			if (!this.visited.contains(neighbor)) {

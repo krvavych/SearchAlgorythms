@@ -28,6 +28,26 @@ public class Graph {
 	}
 
 	public static void main(String[] args) {
+		Graph g = new Graph();
+		g.addEdge("A", "B");
+		g.addEdge("B", "A");
+		g.addEdge("B", "C");
+		g.addEdge("B", "D");
+		g.addEdge("B", "E");
+		g.addEdge("B", "F");
+		g.addEdge("C", "A");
+		g.addEdge("D", "C");
+		g.addEdge("E", "B");
+		g.addEdge("F", "B");
+		Iterator<String> graph1 = new BreadthFirstIterator(g, "C");
+		while (graph1.hasNext()) {
+			System.out.print(graph1.next().intern()+' ');
+		}
+		System.out.println();
+		Iterator<String> graph2 = new DeapthFirstIterator(g, "C");
+		while (graph2.hasNext()) {
+			System.out.print(graph2.next()+' ');
+		}
 		Graph d = new Graph();
 		d.addEdge("a", "d");
 		d.addEdge("d", "a");
@@ -49,16 +69,17 @@ public class Graph {
 		d.addEdge("e", "f");
 		d.addEdge("g", "e");
 		d.addEdge("e", "g");
-		System.out.println();
-		Iterator<String> graph12 = new BreadthFirstIterator(d, "b");
+		Iterator<String> graph12 = new BreadthFirstIterator(d, "1");
 		while (graph12.hasNext()) {
 			System.out.print(graph12.next()+' ');
 		}
 		System.out.println();
-		Iterator<String> graph22 = new DeapthFirstIterator(d, "b");
+		Iterator<String> graph22 = new DeapthFirstIterator(d, "1");
 		while (graph22.hasNext()) {
 			System.out.print(graph22.next()+' ');
 		}
+		
+
 
 	}
 }

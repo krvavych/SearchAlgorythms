@@ -28,6 +28,26 @@ public class Graph {
 	}
 
 	public static void main(String[] args) {
+		Graph g = new Graph();
+		g.addEdge("A", "B");
+		g.addEdge("B", "A");
+		g.addEdge("B", "C");
+		g.addEdge("B", "D");
+		g.addEdge("B", "E");
+		g.addEdge("B", "F");
+		g.addEdge("C", "A");
+		g.addEdge("D", "C");
+		g.addEdge("E", "B");
+		g.addEdge("F", "B");
+		Iterator<String> graph1 = new BreadthFirstIterator(g, "C");
+		while (graph1.hasNext()) {
+			System.out.print(graph1.next().intern()+' ');
+		}
+		System.out.println();
+		Iterator<String> graph2 = new DeapthFirstIterator(g, "C");
+		while (graph2.hasNext()) {
+			System.out.print(graph2.next()+' ');
+		}
 		Graph d = new Graph();
 		d.addEdge("a", "d");
 		d.addEdge("d", "a");
@@ -59,6 +79,33 @@ public class Graph {
 		while (graph22.hasNext()) {
 			System.out.print(graph22.next()+' ');
 		}
+		Graph t = new Graph();
+		t.addEdge("1", "2");
+		t.addEdge("2", "1");
+		t.addEdge("2", "7");
+		t.addEdge("7", "2");
+		t.addEdge("2", "8");
+		t.addEdge("8", "2");
+		t.addEdge("1", "3");
+		t.addEdge("3", "1");
+		t.addEdge("3", "4");
+		t.addEdge("4", "3");
+		t.addEdge("3", "5");
+		t.addEdge("5", "3");
+		t.addEdge("5", "6");
+		t.addEdge("6", "5");
+		System.out.println();
+		Iterator<String> graph123 = new BreadthFirstIterator(t, "1");
+		while (graph123.hasNext()) {
+			System.out.print(graph123.next()+' ');
+		}
+		System.out.println();
+		Iterator<String> graph223 = new DeapthFirstIterator(t, "1");
+		while (graph223.hasNext()) {
+			System.out.print(graph223.next()+' ');
+		}
+		
+
 
 	}
 }
