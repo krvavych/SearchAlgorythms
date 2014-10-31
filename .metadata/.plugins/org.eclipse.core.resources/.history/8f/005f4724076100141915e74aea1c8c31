@@ -1,0 +1,53 @@
+package fielden.com.ua.search;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+public class Graph {
+	private Map<String, List<String>> edges = new HashMap<String, List<String>>();
+
+	public void addEdge(String src, String dest) {
+		List<String> srcNeighbors = this.edges.get(src);
+		if (srcNeighbors == null) {
+			this.edges.put(src, srcNeighbors = new ArrayList<String>());
+		}
+		srcNeighbors.add(dest);
+	}
+
+	public Iterable<String> getNeighbors(String vertex) {
+		List<String> neighbors = this.edges.get(vertex);
+		if (neighbors == null) {
+			return Collections.emptyList();
+		} else {
+			return Collections.unmodifiableList(neighbors);
+		}
+	}
+
+	public static void main(String[] args) {
+		Graph g = new Graph();
+		g.addEdge("A", "B");
+		g.addEdge("B", "A");
+		g.addEdge("B", "C");
+		g.addEdge("B", "D");
+		g.addEdge("B", "E");
+		g.addEdge("B", "F");
+		g.addEdge("c", "A");
+		g.addEdge("D", "C");
+		g.addEdge("E", "B");
+		g.addEdge("F", "B");
+		Iterator<String> graph1 = new BreadthFirstIterator(g, "A");
+		while (graph1.hasNext()) {
+			System.out.println(graph1.next().intern());
+		}
+		Iterator<String> graph2 = new DeapthFirstIterator(g, "A");
+		while (graph2.hasNext()) {
+			System.out.println(graph2.next());
+		}
+
+
+	}
+}
