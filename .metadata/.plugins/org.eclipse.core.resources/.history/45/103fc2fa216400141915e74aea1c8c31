@@ -42,7 +42,7 @@ public class Graph {
 			System.out.print(graph2.next()+' ');
 			count++;
 			if(!graph2.hasNext()){
-				System.out.println("\nGraph g have" +' '+ count +" verteces");
+				System.out.println("Graph have" + count +" verteces");
 			}
 		}
 

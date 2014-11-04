@@ -47,7 +47,7 @@ public class DeapthFirstIterator implements Iterator<String> {
 		do {
 			while (!neighbors.hasNext()) {
 				this.stack.pop();
-				if (this.stack.isEmpty()) {
+				if (this.stack.isEmpty()) { 
 					this.next = null;
 					return;
 				}

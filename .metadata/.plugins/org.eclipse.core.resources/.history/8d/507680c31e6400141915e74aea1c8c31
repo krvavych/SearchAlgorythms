@@ -36,14 +36,9 @@ public class Graph {
 	}
 	
 	public static void DFS(Graph g, String vertex){
-		int count = 0;
 		final Iterator<String> graph2 = new DeapthFirstIterator(g, vertex);
 		while (graph2.hasNext()) {
 			System.out.print(graph2.next()+' ');
-			count++;
-			if(!graph2.hasNext()){
-				System.out.println("\nGraph g have" +' '+ count +" verteces");
-			}
 		}
 
 	}
