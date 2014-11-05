@@ -1,0 +1,11 @@
+package fielden.com.ua.search;
+
+public class Edge {
+	public Vertex sourseVertex;
+	public Vertex destinationVertex;
+	Edge(Vertex sourseVertex, Vertex destinationVertex){
+		this.sourseVertex = sourseVertex;
+		this.destinationVertex = destinationVertex;
+	}
+
+}

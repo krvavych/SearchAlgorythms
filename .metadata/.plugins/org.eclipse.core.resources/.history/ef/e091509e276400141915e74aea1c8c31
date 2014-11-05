@@ -1,0 +1,13 @@
+package fielden.com.ua.search;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestDFS {
+
+	@Test
+	public void D() {
+	}
+
+}
