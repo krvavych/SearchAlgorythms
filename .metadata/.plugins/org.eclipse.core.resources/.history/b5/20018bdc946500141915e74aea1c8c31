@@ -1,0 +1,23 @@
+package fielden.com.ua.search;
+
+import java.util.LinkedList;
+
+public class Vertex<E> {
+	private E element;
+	private int id;
+	private LinkedList<Edge<E>> pointers;
+
+	public Vertex() {
+		this(null);
+	}
+
+	public Vertex (E element){
+		this.element = element;
+		pointers = new LinkedList(Edge<E>);
+	}
+
+	public int getId(int id) {
+		return id;
+	}
+
+}

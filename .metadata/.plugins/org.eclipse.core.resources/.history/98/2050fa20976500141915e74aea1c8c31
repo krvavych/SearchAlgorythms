@@ -1,0 +1,45 @@
+package fielden.com.ua.search;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+
+public class Vertex<E> {
+	private E element;
+	private int id;
+	private LinkedList<Edge<E>> pointers;
+
+	public Vertex() {
+		this(null);
+	}
+
+	public Vertex (E element){
+		this.element = element;
+		pointers = new LinkedList<Edge<E>>();
+	}
+
+	public int getId() {
+		return id;
+	}
+	public E getElement (){
+		return element;
+	}
+	public Vertex<E> setElement(E element){
+		this.element = element;
+		return this;
+	}	
+	
+	public void addEdge (Vertex<E> obj){
+		Edge<E> edge = new Edge<E>(this, obj);
+		if(!pointers.contains(edge)){
+			pointers.add(edge);
+		}
+	}
+	
+	public LinkedList<Edge<E>> getEdge(){
+		return pointers;
+	}
+	public Iterator<Edge<E>> iterator(){
+		return pointers.iterator();
+	}
+
+}

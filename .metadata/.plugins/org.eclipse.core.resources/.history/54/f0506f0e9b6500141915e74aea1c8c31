@@ -1,0 +1,7 @@
+package fielden.com.ua.search;
+import java.util.ArrayList;
+
+public class Graph<T> {
+	private ArrayList<Vertex<T>> vertex;
+	
+}

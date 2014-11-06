@@ -1,32 +1,32 @@
 package fielden.com.ua.search;
 
-public class Edge<T>{
-	private Vertex<T> sourse, destination;
+public class Edge<E>{
+	private Vertex<E> sourse, destination;
 
-	public Vertex<T> getSourse() {
+	public Vertex<E> getSourse() {
 		return sourse;
 	}
 
-	public Edge<T> setSourse(Vertex<T> sourse) {
+	public Edge<E> setSourse(Vertex<E> sourse) {
 		this.sourse = sourse;
 		return this;
 	}
 
-	public Vertex<T> getDestination() {
+	public Vertex<E> getDestination() {
 		return destination;
 	}
 
-	public Edge<T> setDestination(Vertex<T> destination) {
+	public Edge<E> setDestination(Vertex<E> destination) {
 		this.destination = destination;
 		return this;
 	}
 
-	public Edge(Vertex<T> sourse, Vertex<T> destinstion) {
+	public Edge(Vertex<E> sourse, Vertex<E> destinstion) {
 		this.sourse = sourse;
 		this.destination = destinstion;
 	}
 
-	public boolean equals(Edge<T> obj) {
+	public boolean equals(Edge<E> obj) {
 		return sourse.equals(obj.getDestination())
 				&& destination.equals(obj.getDestination());
 	}
@@ -35,6 +35,5 @@ public class Edge<T>{
 		return "(" + sourse.getElement() + ", " + destination.getElement() + ")";
 	}
 	
-
 	
 }

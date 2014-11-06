@@ -30,11 +30,7 @@ public class Graph<T> {
 	}
 
 	public boolean equals(Graph<T> obj) {
-		if(this.verteces.size() != obj.verteces.size()){
-			return false;
-		}
-		ArrayList<Vertex<T>> temp = new ArrayList<Vertex<T>>(this.verteces);
-		return (!temp.retainAll(obj.verteces));
+		return false;
 	}
 
 }

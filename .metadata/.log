@@ -296,3 +296,6 @@ Binding(ALT+CTRL+P,
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2014-10-31 15:16:32.654
 !MESSAGE Can't handle %s as source for finding entrypoints.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2014-11-06 11:22:01.396
+!MESSAGE Can't handle %s as parent of completion location.

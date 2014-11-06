@@ -1,0 +1,31 @@
+package fielden.com.ua.search;
+
+import java.util.Comparator;
+
+public class Edge<E> implements Comparator<Edge<E>> {
+	private Vertex<E> sourse, destination;
+
+	public Vertex<E> getSourse() {
+		return sourse;
+	}
+
+	public Edge<E> setSourse(Vertex<E> sourse) {
+		this.sourse = sourse;
+		return this;
+	}
+
+	public Vertex<E> getDestination() {
+		return destination;
+	}
+
+	public Edge<E> setDestination(Vertex<E> destination) {
+		this.destination = destination;
+		return this;
+	}
+
+	public Edge(Vertex<E> sourse, Vertex<E> destinstion) {
+		this.sourse = sourse;
+		this.destination = destinstion;
+	}
+
+}
