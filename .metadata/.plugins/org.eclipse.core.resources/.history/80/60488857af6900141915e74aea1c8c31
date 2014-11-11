@@ -12,7 +12,7 @@ public class BreadthFirstIterator implements Iterator<Integer> {
 	private Queue<Integer> queue = new LinkedList<Integer>();
 	private Graph<Object> graph;
 
-	public BreadthFirstIterator(Graph<Object> g, int startingVertexId) {
+	public BreadthFirstIterator(Graph<Object> g, Integer startingVertexId) {
 		this.graph = g;
 		this.queue.add(startingVertexId);
 		this.visited.add(startingVertexId);

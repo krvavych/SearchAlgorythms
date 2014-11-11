@@ -6,16 +6,16 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 
-public class BreadthFirstIterator implements Iterator<Integer> {
+public class BreadthFirstIterator implements Iterator<String> {
 
-	private Set<Integer> visited = new HashSet<Integer>();
-	private Queue<Integer> queue = new LinkedList<Integer>();
-	private Graph<Object> graph;
+	private Set<String> visited = new HashSet<String>();
+	private Queue<String> queue = new LinkedList<String>();
+	private Graph graph;
 
-	public BreadthFirstIterator(Graph<Object> g, int startingVertexId) {
+	public BreadthFirstIterator(Graph g, String startingVertex) {
 		this.graph = g;
-		this.queue.add(startingVertexId);
-		this.visited.add(startingVertexId);
+		this.queue.add(startingVertex);
+		this.visited.add(startingVertex);
 	}
 
 	@Override
@@ -29,9 +29,9 @@ public class BreadthFirstIterator implements Iterator<Integer> {
 	}
 
 	@Override
-	public Integer next() {
-		Integer next = queue.remove();
-		for (Integer neighbor : this.graph.getNeighbors(next)) {
+	public String next() {
+		String next = queue.remove();
+		for (String neighbor : this.graph.getNeighbors(next)) {
 			if (!this.visited.contains(neighbor)) {
 				this.queue.add(neighbor);
 				this.visited.add(neighbor);

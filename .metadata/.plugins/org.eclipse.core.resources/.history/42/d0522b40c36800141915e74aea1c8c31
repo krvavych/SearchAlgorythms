@@ -14,16 +14,11 @@ public class Vertex<T> {
 
 	public Vertex(T element) {
 		this.element = element;
-		setPointers(new LinkedList<Edge<T>>());
+		pointers = new LinkedList<Edge<T>>();
 	}
 
 	public int getId() {
 		return id;
-	}
-	
-	public Vertex<T> setId(int id) {
-		this.id = id;
-		return this;
 	}
 
 	public T getElement() {
@@ -33,34 +28,33 @@ public class Vertex<T> {
 	public Vertex<T> setElement(T element) {
 		this.element = element;
 		return this;
-	}	
+	}
+
+	public void addEdge(Vertex<T> obj) {
+		Edge<T> edge = new Edge<T>(this, obj);
+		if (!pointers.contains(edge)) {
+			pointers.add(edge);
+		}
+	}
 
 	public LinkedList<Edge<T>> getEdge() {
-		return getPointers();
+		return pointers;
 	}
 
 	public Iterator<Edge<T>> iterator() {
-		return getPointers().iterator();
+		return pointers.iterator();
 	}
 
 	public boolean equals(Vertex<T> obj) {
-		if (this.getPointers().size() != obj.getEdge().size()) {
+		if (this.pointers.size() != obj.getEdge().size()) {
 			return false;
 		}
 		LinkedList<Edge<T>> temp = new LinkedList<Edge<T>>(obj.getEdge());
-		return  (!temp.retainAll(this.getPointers()));
+		return  (!temp.retainAll(this.pointers));
 	}
 
 	public String toString() {
 		return this.element.toString();
-	}
-
-	public LinkedList<Edge<T>> getPointers() {
-		return pointers;
-	}
-
-	public void setPointers(LinkedList<Edge<T>> pointers) {
-		this.pointers = pointers;
 	}
 
 }

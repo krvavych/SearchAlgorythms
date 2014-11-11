@@ -1,0 +1,13 @@
+package fielden.com.ua.search;
+
+public class Builder<T> implements IVisitor<T>{
+	
+
+	@Override
+	public void visitor(Vertex<T> vertex) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
+}

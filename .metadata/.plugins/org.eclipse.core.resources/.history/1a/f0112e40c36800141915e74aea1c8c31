@@ -1,0 +1,5 @@
+package fielden.com.ua.search;
+
+public class IVisitor {
+
+}

@@ -2,9 +2,7 @@ package fielden.com.ua.search;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
-import fielden.com.ua.search.*;
 
 public class Graph<T> {
 	final private ArrayList<Vertex<T>> verteces;
@@ -33,7 +31,7 @@ public class Graph<T> {
 
 	public int count() {
 		return verteces.size();
-	}
+		}
 
 	public boolean equals(Graph<T> obj) {
 		if (this.verteces.size() != obj.verteces.size()) {
@@ -42,58 +40,38 @@ public class Graph<T> {
 		ArrayList<Vertex<T>> temp = new ArrayList<Vertex<T>>(this.verteces);
 		return (!temp.retainAll(obj.verteces));
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	public void addEdge(int sId, int dId) {
-		List<Integer> srcNeighbors = (List<Integer>) this.edges.get(sId);
-		if (srcNeighbors == null) {
-			this.edges.set(sId,
-					(Edge<T>) (srcNeighbors = new ArrayList<Integer>()));
-		}
-		srcNeighbors.add(dId);
-	}
-
+        List<Integer> srcNeighbors = (List<Integer>) this.edges.get(sId);
+        if (srcNeighbors == null) {
+            this.edges.set(sId,
+                (Edge<T>) (srcNeighbors = new ArrayList<Integer>())
+            );
+        }
+        srcNeighbors.add(dId);
+    }
 	public Iterable<Integer> getNeighbors(int id) {
-		@SuppressWarnings("unchecked")
+        @SuppressWarnings("unchecked")
 		List<Integer> neighbors = (List<Integer>) this.edges.get(id);
-		if (neighbors == null) {
-			return Collections.emptyList();
-		} else {
-			return Collections.unmodifiableList(neighbors);
-		}
-	}
-
-	public Graph(Builder builder) {
+        if (neighbors == null) {
+            return Collections.emptyList();
+        } else {
+            return Collections.unmodifiableList(neighbors);
+        }
+    }
+	public Graph (Builder builder){
 		verteces = builder.vertexes;
 		edges = builder.edges;
 	}
-
-	public void dfs(Graph<T> g, int id) {
-		Builder<T> b = new Builder<T>();
-		Iterator g1 = new DeapthFirstIterator((Graph<Object>) g, id);
-		final ArrayList<T> element = new ArrayList<T>();
-		while (g1.hasNext()) {
-			System.out.println(g1.next());
-		}
-	}
-
+	
 	public static void main(String[] args) {
 		Graph g = new Graph<String>();
 		Builder<String> builder = new Builder<String>();
-		g.addVertex(builder.vertex(1, "a"));
-		g.addVertex(builder.vertex(2, "b"));
-		g.addVertex(builder.vertex(3, "c"));
-		g.addVertex(builder.vertex(4, "d"));
-		g.addEdge(1, 2);
-		g.addEdge(2, 1);
-		g.addEdge(1, 3);
-		g.addEdge(3, 1);
-		g.addEdge(3, 4);
-		g.addEdge(4, 3);
-		Iterator g1 = new DeapthFirstIterator(g, 1);
-		while (g1.hasNext()) {
-			System.out.println(g1.next());
-		}
+		g.addVertex(builder.vertex(1,"a"));
+		
+		
+		
 	}
 
 }

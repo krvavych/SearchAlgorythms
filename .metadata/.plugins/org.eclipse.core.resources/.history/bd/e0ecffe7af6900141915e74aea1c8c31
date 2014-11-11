@@ -68,15 +68,6 @@ public class Graph<T> {
 		edges = builder.edges;
 	}
 
-	public void dfs(Graph<T> g, int id) {
-		Builder<T> b = new Builder<T>();
-		Iterator g1 = new DeapthFirstIterator((Graph<Object>) g, id);
-		final ArrayList<T> element = new ArrayList<T>();
-		while (g1.hasNext()) {
-			System.out.println(g1.next());
-		}
-	}
-
 	public static void main(String[] args) {
 		Graph g = new Graph<String>();
 		Builder<String> builder = new Builder<String>();
@@ -90,10 +81,10 @@ public class Graph<T> {
 		g.addEdge(3, 1);
 		g.addEdge(3, 4);
 		g.addEdge(4, 3);
-		Iterator g1 = new DeapthFirstIterator(g, 1);
+		Iterator g1 = new BreadthFirstIterator(g, 1);
 		while (g1.hasNext()) {
-			System.out.println(g1.next());
-		}
+			System.out.println(g1.next().intern());
+			 }
 	}
 
 }

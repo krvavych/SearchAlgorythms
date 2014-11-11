@@ -1,0 +1,26 @@
+package fielden.com.ua.search;
+
+import java.util.ArrayList;
+
+public class Builder<T> implements IVisitor<T> {
+	final public ArrayList<Edge<T>> edges;
+	final public ArrayList<Vertex<T>> vertxes;
+	final public Graph<T> g;
+
+	public Builder() {
+		g = new Graph<T>();
+		edges = new ArrayList<Edge<T>>();
+		vertxes = new ArrayList<Vertex<T>>();
+	}
+	public void buildVertexes(Vertex<T> vertex){
+		g.addVertex(vertex);
+	}
+	public void buildEdges(int sId, int dId){
+		g.addEdge(sId, dId);
+	}
+
+	public void visitor(Vertex<T> vertex) {
+
+	}
+
+}

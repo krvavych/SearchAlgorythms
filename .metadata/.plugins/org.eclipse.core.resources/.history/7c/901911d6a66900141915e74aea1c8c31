@@ -1,0 +1,65 @@
+package fielden.com.ua.search;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Graph<T> {
+	final private ArrayList<Vertex<T>> verteces;
+	final private ArrayList<Edge<T>> edges;
+
+	public Graph() {
+		verteces = new ArrayList<Vertex<T>>();
+	}
+
+	public boolean addVertex(Vertex<T> vertex) {
+		if (verteces.contains(vertex)) {
+			return false;
+		}
+		verteces.add(vertex);
+		return true;
+	}
+
+	public boolean contains(Vertex<T> vertex) {
+		return verteces.contains(vertex);
+	}
+
+	public Vertex<T> get(int index) {
+		return verteces.get(index);
+	}
+
+	public int count() {
+		return verteces.size();
+		}
+
+	public boolean equals(Graph<T> obj) {
+		if (this.verteces.size() != obj.verteces.size()) {
+			return false;
+		}
+		ArrayList<Vertex<T>> temp = new ArrayList<Vertex<T>>(this.verteces);
+		return (!temp.retainAll(obj.verteces));
+	}
+	
+	public void addEdge(int sId, int dId) {
+        List<Integer> srcNeighbors = (List<Integer>) this.edges.get(sId);
+        if (srcNeighbors == null) {
+            this.edges.set(sId,
+                (Edge<T>) (srcNeighbors = new ArrayList<Integer>())
+            );
+        }
+        srcNeighbors.add(dId);
+    }
+	public Iterable<Integer> getNeighbors(int id) {
+        List<Integer> neighbors = (List<Integer>) this.edges.get(id);
+        if (neighbors == null) {
+            return Collections.emptyList();
+        } else {
+            return Collections.unmodifiableList(neighbors);
+        }
+    }
+	
+	public static void main(String[] args) {
+		Graph g = new Graph<Integer>();
+	}
+
+}
