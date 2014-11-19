@@ -1,40 +1,62 @@
 package fielden.com.ua.search;
 
-public class Edge<T>{
-	private Vertex<T> sourse, destination;
+public class Edge {
+	private final Vertex sourse, destination;
 
-	public Vertex<T> getSourse() {
+	public Vertex getSourse() {
 		return sourse;
 	}
 
-	public Edge<T> setSourse(Vertex<T> sourse) {
-		this.sourse = sourse;
-		return this;
-	}
-
-	public Vertex<T> getDestination() {
+	public Vertex getDestination() {
 		return destination;
 	}
 
-	public Edge<T> setDestination(Vertex<T> destination) {
-		this.destination = destination;
-		return this;
-	}
-
-	public Edge(Vertex<T> sourse, Vertex<T> destinstion) {
+	public Edge(final Vertex sourse, final Vertex destination) {
 		this.sourse = sourse;
-		this.destination = destinstion;
+		this.destination = destination;
 	}
 
-	public boolean equals(Edge<T> obj) {
-		return sourse.equals(obj.getDestination())
-				&& destination.equals(obj.getDestination());
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((destination == null) ? 0 : destination.hashCode());
+		result = prime * result + ((sourse == null) ? 0 : sourse.hashCode());
+		return result;
 	}
 
+	@Override
+	public boolean equals(final Object thatEdge) {
+		if (this == thatEdge) {
+			return true;
+		}
+		if (thatEdge == null) {
+			return false;
+		}
+		if (getClass() != thatEdge.getClass()) {
+			return false;
+		}
+		final Edge other = (Edge) thatEdge;
+		if (destination == null) {
+			if (other.destination != null) {
+				return false;
+			}
+		} else if (!destination.equals(other.destination)) {
+			return false;
+		}
+		if (sourse == null) {
+			if (other.sourse != null) {
+				return false;
+			}
+		} else if (!sourse.equals(other.sourse)) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
 	public String toString() {
-		return "(" + sourse.getElement() + ", " + destination.getElement() + ")";
+		return sourse + ", " + destination;
 	}
-	
-
-	
 }

@@ -1,0 +1,33 @@
+package fielden.com.ua.search;
+
+public class Vertex<T> {
+	private T element;
+	private int id;
+
+	public Vertex(final int id, final T element) {
+		this.element = element;
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
+	}
+	
+	public Vertex<T> setId(int id) {
+		this.id = id;
+		return this;
+	}
+
+	public T getElement() {
+		return element;
+	}
+
+	public Vertex<T> setElement(T element) {
+		this.element = element;
+		return this;
+	}	
+
+	public String toString() {
+		return this.element.toString();
+	}
+}

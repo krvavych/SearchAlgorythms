@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="testBuilder" project="SearchAlgorythms" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="fielden.com.ua.serch.testBuilder" time="0.006">
+    <testcase name="it_should_be_imposible_to_add_the_same_vertex" classname="fielden.com.ua.serch.testBuilder" time="0.005"/>
+    <testcase name="it_should_be_imposible_to_add_the_same_edge" classname="fielden.com.ua.serch.testBuilder" time="0.001"/>
+  </testsuite>
+</testrun>

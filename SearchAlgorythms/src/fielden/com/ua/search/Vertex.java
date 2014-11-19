@@ -1,66 +1,60 @@
 package fielden.com.ua.search;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-
-public class Vertex<T> {
-	private T element;
+public class Vertex {
+	private Object element;
 	private int id;
-	private LinkedList<Edge<T>> pointers;
 
-	public Vertex() {
-		this(null);
+	public Vertex(final int id, final Object element) {
+		this.element = element;
+		this.id = id;
 	}
 
-	public Vertex(T element) {
-		this.element = element;
-		setPointers(new LinkedList<Edge<T>>());
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(final Object thatVertex) {
+		if (this == thatVertex) {
+			return true;
+		}
+		if (thatVertex == null) {
+			return false;
+		}
+		if (getClass() != thatVertex.getClass()) {
+			return false;
+		}
+		final Vertex other = (Vertex) thatVertex;
+		if (id != other.id) {
+			return false;
+		}
+		return true;
 	}
 
 	public int getId() {
 		return id;
 	}
-	
-	public Vertex<T> setId(int id) {
+
+	public Vertex setId(final int id) {
 		this.id = id;
 		return this;
 	}
 
-	public T getElement() {
+	public Object getElement() {
 		return element;
 	}
 
-	public Vertex<T> setElement(T element) {
+	public Vertex setElement(final Object element) {
 		this.element = element;
 		return this;
-	}	
-
-	public LinkedList<Edge<T>> getEdge() {
-		return getPointers();
 	}
 
-	public Iterator<Edge<T>> iterator() {
-		return getPointers().iterator();
-	}
-
-	public boolean equals(Vertex<T> obj) {
-		if (this.getPointers().size() != obj.getEdge().size()) {
-			return false;
-		}
-		LinkedList<Edge<T>> temp = new LinkedList<Edge<T>>(obj.getEdge());
-		return  (!temp.retainAll(this.getPointers()));
-	}
-
+	@Override
 	public String toString() {
-		return this.element.toString();
+		return id + this.element.toString();
 	}
-
-	public LinkedList<Edge<T>> getPointers() {
-		return pointers;
-	}
-
-	public void setPointers(LinkedList<Edge<T>> pointers) {
-		this.pointers = pointers;
-	}
-
 }

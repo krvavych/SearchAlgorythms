@@ -1,0 +1,14 @@
+package fielden.com.ua.search;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class testVertex {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

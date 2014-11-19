@@ -1,0 +1,31 @@
+package fielden.com.ua.search;
+
+public class Edge<T>{
+	private final Vertex<T> sourse, destination;
+
+	public Edge(final Vertex<T> sourse, final Vertex<T> destinstion) {
+		this.sourse = sourse;
+		this.destination = destinstion;
+	}
+
+	public boolean equals(final Edge<T> obj) {
+		return sourse.equals(obj.getDestination())
+				&& destination.equals(obj.getDestination());
+	}
+
+	public Vertex<T> getSourse() {
+		return sourse;
+	}
+
+	public Vertex<T> getDestination() {
+		return destination;
+	}
+
+	@Override
+	public String toString() {
+		return "(" + sourse.getElement() + ", " + destination.getElement() + ")";
+	}
+
+
+
+}

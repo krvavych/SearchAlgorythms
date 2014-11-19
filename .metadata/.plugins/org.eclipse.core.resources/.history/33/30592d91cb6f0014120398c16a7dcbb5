@@ -1,0 +1,40 @@
+package fielden.com.ua.search;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+public class Builder implements IVisitor {
+	public Map<Vertex, Set<Vertex>> edgesOfVertex = new HashMap<Vertex, Set<Vertex>>();
+	public Set<Vertex> vertexes = new HashSet<Vertex>();
+	public Set<Edge> edges = new HashSet<Edge>();
+
+	public Builder addEdge(final Vertex s, final Vertex d) {
+		final Edge edge = new Edge(s, d);
+		if (!edges.contains(edge)) {
+			edges.add(edge);
+		} else {
+			System.out.println("This edge already exists");
+		}
+		return this;
+	}
+
+	public Builder setVertex(final int id, final Object element) {
+		final Vertex vertex = new Vertex(id, element);
+		if (!vertexes.contains(vertex)) {
+			vertexes.add(vertex);
+		} else {
+			System.out.println("This vertex already exists");
+		}
+		return this;
+	}
+
+
+
+	public void visitor(final Vertex vertex) {
+		vertex.getElement();
+
+	}
+
+}

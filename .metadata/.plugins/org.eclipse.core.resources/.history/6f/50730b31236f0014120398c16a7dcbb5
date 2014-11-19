@@ -1,0 +1,91 @@
+package fielden.com.ua.search;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+
+public class Graph<T> {
+	public final List<Vertex<T>> verteces;
+	public final List<Edge<T>> edges;
+
+	public Graph() {
+		verteces = new ArrayList<Vertex<T>>();
+		edges = new ArrayList<Edge<T>>();
+	}
+
+	public boolean contains( final Vertex<T> vertex) {
+		return verteces.contains(vertex);
+	}
+
+	public int count() {
+		return verteces.size();
+	}
+
+	public void addEdge(final Vertex<T> s, final Vertex<T> d) {
+		final Edge<T> edge = new Edge<T>(s, d);
+		if (!edges.contains(edge)) {
+			edges.add(edge);
+		}
+		if (!verteces.contains(s)) {
+			verteces.add(s);
+		}
+		if (!verteces.contains(d)) {
+			verteces.add(d);
+		}
+	}
+
+	public Vertex<T> getS(final ArrayList<Edge<T>> edges, final int index) {
+		return edges.get(index).getSourse();
+	}
+
+	public Vertex<T> getD(final ArrayList<Edge<T>> edges, final int index) {
+		return edges.get(index).getDestination();
+	}
+
+	public Iterable<Vertex<T>> getNeighbors(final Vertex<T> node) {
+		final List<Vertex<T>> neighbors = new ArrayList<Vertex<T>>();
+		for (int i = 0; i <= edges.size(); i++) {
+			if ((node.getId() == (getS(edges, i).getId()) && ((node
+					.getElement())) == (getS(edges, i)))) {
+				neighbors.add(getD(edges, i));
+			} else if ((node.getId() == (getD(edges, i).getId()) && ((node
+					.getElement())) == (getD(edges, i)))) {
+				neighbors.add(getS(edges, i));
+			}
+		}
+		return neighbors;
+	}
+
+	public List<Vertex<T>> getVerteces() {
+		return Collections.unmodifiableList(verteces);
+	}
+
+
+	public static void dfs(final Graph<Object> g, final Vertex<Object> startingNode) {
+		final Builder<Object> builder = new Builder<Object>();
+		final Iterator<Vertex<Object>> g1 = new DeapthFirstIterator(g, startingNode);
+		final ArrayList<Object> element = new ArrayList<Object>();
+		while (g1.hasNext()) {
+			System.out.println(g1.next());
+			element.add(builder.visitor(g1.next()));
+		}
+		System.out.println(element.toString());
+	}
+
+	public static void main(final String[] args) {
+		final Builder<Object> builder;
+		final Graph<Object> g = new Graph<Object>();
+		final Vertex<Object> v1 = new Vertex<Object>(1, "start");
+		final Vertex<Object> v2 = new Vertex<Object>(2, 12);
+		final Vertex<Object> v3 = new Vertex<Object>(2, "vertex");
+		final Vertex<Object> v4 = new Vertex<Object>(4, "end");
+		g.addEdge(v1, v2);
+		g.addEdge(v2, v1);
+		g.addEdge(v1, v3);
+		g.addEdge(v3, v1);
+		g.addEdge(v3, v4);
+		g.addEdge(v4, v3);
+		dfs(g, v1);
+	}
+}

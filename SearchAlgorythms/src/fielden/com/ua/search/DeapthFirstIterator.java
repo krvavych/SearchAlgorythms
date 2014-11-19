@@ -7,16 +7,16 @@ import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-public class DeapthFirstIterator implements Iterator<Integer> {
-	private Set<Integer> visited = new HashSet<Integer>();
-	private Deque<Iterator<Integer>> stack = new LinkedList<Iterator<Integer>>();
+public class DeapthFirstIterator implements Iterator<Vertex<Object>> {
+	private Set<Vertex<Object>> visited = new HashSet<Vertex<Object>>();
+	private Deque<Iterator<Vertex<Object>>> stack = new LinkedList<Iterator<Vertex<Object>>>();
 	private Graph<Object> graph;
-	private Integer next;
+	private Vertex<Object> next;
 
-	public DeapthFirstIterator(Graph<Object> g, Integer startingVertexId) {
-		this.stack.push(g.getNeighbors(startingVertexId).iterator());
+	public DeapthFirstIterator(Graph<Object> g, Vertex<Object> startingVertex) {
+		this.stack.push(g.getNeighbors(startingVertex).iterator());
 		this.graph = g;
-		this.next = startingVertexId;
+		this.next = startingVertex;
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class DeapthFirstIterator implements Iterator<Integer> {
 	}
 
 	@Override
-	public Integer next() {
+	public Vertex<Object> next() {
 		if (this.next == null) {
 			throw new NoSuchElementException();
 		}
@@ -43,7 +43,7 @@ public class DeapthFirstIterator implements Iterator<Integer> {
 	}
 
 	private void advance() {
-		Iterator<Integer> neighbors = this.stack.peek();
+		Iterator<Vertex<Object>> neighbors = this.stack.peek();
 		do {
 			while (!neighbors.hasNext()) {
 				this.stack.pop();

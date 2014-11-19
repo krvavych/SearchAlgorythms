@@ -1,0 +1,40 @@
+package fielden.com.ua.search;
+
+import java.util.Map;
+
+public class Vertex {
+	private Map<Vertex, Edge> edgesOfVertexes;
+	private Object element;
+	private int id;
+
+	public Vertex(final int id, final Object element) {
+		this.element = element;
+		this.id = id;
+	}
+	public String toString(Vertex vertex){
+		return  id+" "+element;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public Vertex setId(final int id) {
+		this.id = id;
+		return this;
+	}
+
+	public Object getElement() {
+		return element;
+	}
+
+	public Vertex setElement(final Object element) {
+		this.element = element;
+		return this;
+	}
+
+	@Override
+	public String toString() {
+		return this.element.toString();
+	}
+}

@@ -1,0 +1,28 @@
+package fielden.com.ua.search;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+public class Builder implements IVisitor {
+	public Map<Vertex, Edge> edgesOfVertex = new HashMap<Vertex, Edge>();
+	public Set<Vertex> vertexes = new HashSet<Vertex>();
+	public Set<Edge> edges = new HashSet<Edge>();
+
+	public Builder addEdge(final Vertex s, final Vertex d) {
+		edges.add(new Edge(s, d));
+		return this;
+	}
+
+	public Builder setVertex(final int id, final T element) {
+		vertex = new Vertex(id, element);
+		return this;
+	}
+
+	public void visitor(final Vertex vertex) {
+		vertex.getElement();
+
+	}
+
+}

@@ -1,99 +1,33 @@
 package fielden.com.ua.search;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import fielden.com.ua.search.*;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Graph<T> {
-	final private ArrayList<Vertex<T>> verteces;
-	final private ArrayList<Edge<T>> edges;
+public class Graph {
+	public final Set<Vertex> verteces = new HashSet<Vertex>();
+	public final Set<Edge> edges = new HashSet<Edge>();
 
-	public Graph() {
-		verteces = new ArrayList<Vertex<T>>();
-		edges = new ArrayList<Edge<T>>();
-	}
-
-	public boolean addVertex(Vertex<T> vertex) {
-		if (verteces.contains(vertex)) {
-			return false;
-		}
-		verteces.add(vertex);
-		return true;
-	}
-
-	public boolean contains(Vertex<T> vertex) {
+	public boolean contains(final Vertex vertex) {
 		return verteces.contains(vertex);
 	}
 
-	public Vertex<T> get(int index) {
-		return verteces.get(index);
-	}
-
-	public int count() {
+	public int numberOfVertexes() {
 		return verteces.size();
 	}
 
-	public boolean equals(Graph<T> obj) {
-		if (this.verteces.size() != obj.verteces.size()) {
-			return false;
+	public void addEdge(final Vertex s, final Vertex d) {
+		final Edge edge = new Edge(s, d);
+		if (!edges.contains(edge)) {
+			edges.add(edge);
 		}
-		ArrayList<Vertex<T>> temp = new ArrayList<Vertex<T>>(this.verteces);
-		return (!temp.retainAll(obj.verteces));
-	}
-
-	@SuppressWarnings("unchecked")
-	public void addEdge(int sId, int dId) {
-		List<Integer> srcNeighbors = (List<Integer>) this.edges.get(sId);
-		if (srcNeighbors == null) {
-			this.edges.set(sId,
-					(Edge<T>) (srcNeighbors = new ArrayList<Integer>()));
+		if (!verteces.contains(s)) {
+			verteces.add(s);
 		}
-		srcNeighbors.add(dId);
-	}
-
-	public Iterable<Integer> getNeighbors(int id) {
-		@SuppressWarnings("unchecked")
-		List<Integer> neighbors = (List<Integer>) this.edges.get(id);
-		if (neighbors == null) {
-			return Collections.emptyList();
-		} else {
-			return Collections.unmodifiableList(neighbors);
+		if (!verteces.contains(d)) {
+			verteces.add(d);
 		}
 	}
 
-	public Graph(Builder builder) {
-		verteces = builder.vertexes;
-		edges = builder.edges;
+	public static void main(final String[] args) {
 	}
-
-	public void dfs(Graph<T> g, int id) {
-		Builder<T> b = new Builder<T>();
-		Iterator g1 = new DeapthFirstIterator((Graph<Object>) g, id);
-		final ArrayList<T> element = new ArrayList<T>();
-		while (g1.hasNext()) {
-			System.out.println(g1.next());
-		}
-	}
-
-	public static void main(String[] args) {
-		Graph g = new Graph<String>();
-		Builder<String> builder = new Builder<String>();
-		g.addVertex(builder.vertex(1, "a"));
-		g.addVertex(builder.vertex(2, "b"));
-		g.addVertex(builder.vertex(3, "c"));
-		g.addVertex(builder.vertex(4, "d"));
-		g.addEdge(1, 2);
-		g.addEdge(2, 1);
-		g.addEdge(1, 3);
-		g.addEdge(3, 1);
-		g.addEdge(3, 4);
-		g.addEdge(4, 3);
-		Iterator g1 = new DeapthFirstIterator(g, 1);
-		while (g1.hasNext()) {
-			System.out.println(g1.next());
-		}
-	}
-
 }

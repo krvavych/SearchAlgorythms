@@ -1,0 +1,39 @@
+package fielden.com.ua.search;
+
+public class Edge<T> {
+	private final Vertex<T> sourse, destination;
+
+	public Edge(final Vertex<T> source, final Vertex<T> destination) {
+		if (source == null) {
+			throw new IllegalArgumentException("Source vertex should not be null.");
+		}
+		if (destination == null) {
+			throw new IllegalArgumentException("Destination vertex should not be null.");
+		}
+
+		this.sourse = source;
+		this.destination = destination;
+	}
+
+	@Override
+	public boolean equals(final Edge<T> thatEdge) {
+		return sourse.equals(thatEdge.getSource())
+				&& destination.equals(thatEdge.getDestination());
+	}
+
+	public Vertex<T> getSource() {
+		return sourse;
+	}
+
+	public Vertex<T> getDestination() {
+		return destination;
+	}
+
+	@Override
+	public String toString() {
+		return "(" + sourse.getElement() + ", " + destination.getElement() + ")";
+	}
+
+
+
+}

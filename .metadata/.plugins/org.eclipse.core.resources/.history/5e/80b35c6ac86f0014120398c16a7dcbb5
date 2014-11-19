@@ -1,0 +1,26 @@
+package fielden.com.ua.serch;
+
+import static org.junit.Assert.assertFalse;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.junit.Test;
+
+import fielden.com.ua.search.Edge;
+import fielden.com.ua.search.Vertex;
+
+public class testBuilder {
+
+	@Test
+	public void it_should_be_imposible_to_add_the_same_edge() {
+		final Set<Edge> edges = new HashSet<Edge>();
+		final Vertex sourse = new Vertex(1, "element");
+		final Vertex destination = new Vertex(2, "element");
+		final Edge edge1 = new Edge(sourse, destination);
+		final Edge edge2 = new Edge(sourse, destination);
+		edges.add(edge1);
+		assertFalse(edges.add(edge2));
+	}
+
+}

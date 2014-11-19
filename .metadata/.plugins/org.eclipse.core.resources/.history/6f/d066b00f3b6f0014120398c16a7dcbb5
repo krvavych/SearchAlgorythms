@@ -1,0 +1,22 @@
+package fielden.com.ua.search;
+
+public class Builder<T> implements IVisitor<T> {
+	public Edge<T> edge;
+	public Vertex<T> vertex;
+
+	public Builder<T> setEdge(Vertex<T> s, Vertex<T> d) {
+		edge = new Edge<T>(s, d);
+		return this;
+	}
+
+	public Builder<T> setVertex(int id, T element) {
+		vertex = new Vertex<T>(id, element);
+		return this;
+	}
+
+	public void visitor(Vertex<T> vertex) {
+		vertex.getElement();
+
+	}
+
+}

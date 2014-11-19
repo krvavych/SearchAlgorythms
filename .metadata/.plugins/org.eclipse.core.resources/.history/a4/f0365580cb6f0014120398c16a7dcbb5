@@ -1,0 +1,6 @@
+package fielden.com.ua.search;
+
+public interface IVisitor<T> {
+	void visitor(final Vertex<T> vertex);
+
+}

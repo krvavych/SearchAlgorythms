@@ -1,0 +1,19 @@
+package fielden.com.ua.search;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+import org.omg.CORBA.PUBLIC_MEMBER;
+
+import fielden.com.ua.search.Vertex;
+
+public class testVertex {
+
+	@Test
+	public void vertexEquality() {
+		public final Vertex v1 = new Vertex(1, "One");
+		public final Vertex v2 = new Vertex(2, "One");
+		asssertFalse(v1.equals(v2));
+	}
+
+}

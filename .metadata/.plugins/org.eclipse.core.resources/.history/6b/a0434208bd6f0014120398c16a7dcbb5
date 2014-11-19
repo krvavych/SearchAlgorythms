@@ -1,0 +1,50 @@
+package fielden.com.ua.search;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+public class Graph {
+	public final Set<Vertex> verteces = new HashSet<Vertex>();
+	public final Set<Edge> edges = new HashSet<Edge>();
+
+	public boolean contains(final Vertex vertex) {
+		return verteces.contains(vertex);
+	}
+
+	public int numberOfVertexes() {
+		return verteces.size();
+	}
+
+	public void addEdge(final Vertex s, final Vertex d) {
+		final Edge edge = new Edge(s, d);
+		if (!edges.contains(edge)) {
+			edges.add(edge);
+		}
+		if (!verteces.contains(s)) {
+			verteces.add(s);
+		}
+		if (!verteces.contains(d)) {
+			verteces.add(d);
+		}
+	}
+
+	public static void main(final String[] args) {
+		final Builder<Object> builder;
+		final Graph g = new Graph();
+		final Vertex v1 = new Vertex(1, "start");
+		final Vertex v2 = new Vertex(2, 12);
+		final Vertex v3 = new Vertex(2, "vertex");
+		final Vertex v4 = new Vertex(4, "end");
+		g.addEdge(v1, v2);
+		g.addEdge(v2, v1);
+		g.addEdge(v1, v3);
+		g.addEdge(v3, v1);
+		g.addEdge(v3, v4);
+		g.addEdge(v4, v3);
+		dfs(g, v1);
+	}
+}

@@ -1,0 +1,47 @@
+package fielden.com.ua.search;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Set;
+
+public class BreadthFirstIterator implements Iterator<Integer> {
+
+	private Set<Vertex<Object>> visited = new HashSet<Vertex<Object>>();
+	private Queue<Vertex<Object>> queue = new LinkedList<Vertex<Object>>();
+	private Graph<Object> graph;
+
+	public BreadthFirstIterator(Graph<Object> g, int startingVertexId) {
+		this.graph = g;
+		for (int i = 0; i <= graph.verteces.size(); i++) {
+			if(graph.verteces.get(i).getId()==startingVertexId){
+			this.queue.add(graph.verteces.get(startingVertexId));
+			this.visited.add(graph.verteces.get(startingVertexId));
+			}
+		}
+
+	}
+
+	@Override
+	public void remove() {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public boolean hasNext() {
+		return !this.queue.isEmpty();
+	}
+
+	@Override
+	public Vertex<Object> next() {
+		Vertex<Object> next = queue.remove();
+		for (Vertex<Object> neighbor : this.graph.getNeighbors(next)) {
+			if (!this.visited.contains(neighbor)) {
+				this.queue.add(neighbor);
+				this.visited.add(neighbor);
+			}
+		}
+		return this;
+	}
+}
