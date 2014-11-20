@@ -55,6 +55,6 @@ public class Vertex {
 
 	@Override
 	public String toString() {
-		return id + this.element.toString();
+		return id +" "+ this.element.toString();
 	}
 }

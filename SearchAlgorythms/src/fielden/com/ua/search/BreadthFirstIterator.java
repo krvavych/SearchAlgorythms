@@ -3,24 +3,25 @@ package fielden.com.ua.search;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
-public class BreadthFirstIterator implements Iterator<Object> {
+public class BreadthFirstIterator implements Iterator<Vertex> {
 
-	private Set<Vertex<Object>> visited = new HashSet<Vertex<Object>>();
-	private Queue<Vertex<Object>> queue = new LinkedList<Vertex<Object>>();
-	private Graph<Object> graph;
+	private Set<Vertex> visited = new HashSet<Vertex>();
+	private Queue<Vertex> queue = new LinkedList<Vertex>();
+	private Map<Vertex,Set<Vertex>> map;
+	private Graph graph;
 
-	public BreadthFirstIterator(Graph<Object> g, int startingVertexId) {
+	public BreadthFirstIterator(final Graph g, final Vertex startingVertex) {
 		this.graph = g;
-		for (int i = 0; i <= graph.verteces.size(); i++) {
-			if(graph.verteces.get(i).getId()==startingVertexId){
-			this.queue.add(graph.verteces.get(startingVertexId));
-			this.visited.add(graph.verteces.get(startingVertexId));
+		for (final Vertex vertex : graph.verteces) {
+			if (vertex == startingVertex) {
+				this.queue.add(vertex);
+				this.visited.add(vertex);
 			}
 		}
-
 	}
 
 	@Override
@@ -34,9 +35,11 @@ public class BreadthFirstIterator implements Iterator<Object> {
 	}
 
 	@Override
-	public Vertex<Object> next() {
-		Vertex<Object> next = queue.remove();
-		for (Vertex<Object> neighbor : this.graph.getNeighbors(next)) {
+	public Vertex next() {
+		final Builder builder = new Builder();
+		 builder.creationAdjacencyLists(map, graph.verteces,graph.edges);
+		final Vertex next = queue.remove();
+		for (final Vertex neighbor : map.get(next)) {
 			if (!this.visited.contains(neighbor)) {
 				this.queue.add(neighbor);
 				this.visited.add(neighbor);

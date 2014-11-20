@@ -1,11 +1,13 @@
 package fielden.com.ua.search;
 
-import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Graph {
-	public final Set<Vertex> verteces = new HashSet<Vertex>();
-	public final Set<Edge> edges = new HashSet<Edge>();
+	public Set<Vertex> verteces;
+	public Set<Edge> edges;
+	public final  Map<Vertex, Set<Edge>> edgesOfVertex;
+	public final Map<Vertex, Set<Vertex>> adjacencyVertrxOfVertex;
 
 	public boolean contains(final Vertex vertex) {
 		return verteces.contains(vertex);
@@ -26,6 +28,12 @@ public class Graph {
 		if (!verteces.contains(d)) {
 			verteces.add(d);
 		}
+	}
+	public Graph(final Builder builder){
+		this.edges = builder.edges;
+		this.verteces = builder.vertexes;
+		this.edgesOfVertex = builder.edgesOfVertex;
+		this.adjacencyVertrxOfVertex = builder.adjacencyVertrxOfVertex;
 	}
 
 	public static void main(final String[] args) {

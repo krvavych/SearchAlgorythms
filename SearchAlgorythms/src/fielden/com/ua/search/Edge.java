@@ -57,6 +57,6 @@ public class Edge {
 
 	@Override
 	public String toString() {
-		return sourse + ", " + destination;
+		return sourse + " -- " + destination;
 	}
 }
