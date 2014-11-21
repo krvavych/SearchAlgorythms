@@ -3,7 +3,6 @@ package fielden.com.ua.search;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
@@ -11,7 +10,6 @@ public class BreadthFirstIterator implements Iterator<Vertex> {
 
 	private Set<Vertex> visited = new HashSet<Vertex>();
 	private Queue<Vertex> queue = new LinkedList<Vertex>();
-	private Map<Vertex,Set<Vertex>> map;
 	private Graph graph;
 
 	public BreadthFirstIterator(final Graph g, final Vertex startingVertex) {
@@ -37,9 +35,9 @@ public class BreadthFirstIterator implements Iterator<Vertex> {
 	@Override
 	public Vertex next() {
 		final Builder builder = new Builder();
-		 builder.creationAdjacencyLists(map, graph.verteces,graph.edges);
+		builder.creationAdjacencyLists(graph.adjacencyVertrxOfVertex, graph.verteces, graph.edges);
 		final Vertex next = queue.remove();
-		for (final Vertex neighbor : map.get(next)) {
+		for (final Vertex neighbor : graph.adjacencyVertrxOfVertex.get(next)) {
 			if (!this.visited.contains(neighbor)) {
 				this.queue.add(neighbor);
 				this.visited.add(neighbor);

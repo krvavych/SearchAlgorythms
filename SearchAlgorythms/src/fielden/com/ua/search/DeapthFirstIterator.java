@@ -7,17 +7,20 @@ import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-public class DeapthFirstIterator implements Iterator<Vertex<Object>> {
-	private Set<Vertex<Object>> visited = new HashSet<Vertex<Object>>();
-	private Deque<Iterator<Vertex<Object>>> stack = new LinkedList<Iterator<Vertex<Object>>>();
-	private Graph<Object> graph;
-	private Vertex<Object> next;
+public class DeapthFirstIterator implements Iterator<Vertex> {
+	private Set<Vertex> visited = new HashSet<Vertex>();
+	private Deque<Iterator<Vertex>> stack = new LinkedList<Iterator<Vertex>>();
+	private Graph graph;
+	private Vertex next;
 
-	public DeapthFirstIterator(Graph<Object> g, Vertex<Object> startingVertex) {
-		this.stack.push(g.getNeighbors(startingVertex).iterator());
+	public DeapthFirstIterator(final Graph g, final Vertex startingVertex) {
 		this.graph = g;
+		final Builder builder = new Builder();
+		builder.creationAdjacencyLists(graph.adjacencyVertrxOfVertex, graph.verteces, graph.edges);
+		this.stack.push(graph.adjacencyVertrxOfVertex.get(startingVertex).iterator());
 		this.next = startingVertex;
 	}
+
 
 	@Override
 	public void remove() {
@@ -30,7 +33,7 @@ public class DeapthFirstIterator implements Iterator<Vertex<Object>> {
 	}
 
 	@Override
-	public Vertex<Object> next() {
+	public Vertex next() {
 		if (this.next == null) {
 			throw new NoSuchElementException();
 		}
@@ -43,7 +46,7 @@ public class DeapthFirstIterator implements Iterator<Vertex<Object>> {
 	}
 
 	private void advance() {
-		Iterator<Vertex<Object>> neighbors = this.stack.peek();
+		Iterator<Vertex> neighbors = this.stack.peek();
 		do {
 			while (!neighbors.hasNext()) {
 				this.stack.pop();
@@ -56,6 +59,6 @@ public class DeapthFirstIterator implements Iterator<Vertex<Object>> {
 
 			this.next = neighbors.next();
 		} while (this.visited.contains(this.next));
-		this.stack.push(this.graph.getNeighbors(this.next).iterator());
+		this.stack.push(this.graph.adjacencyVertrxOfVertex.get(this.next).iterator());
 	}
 }

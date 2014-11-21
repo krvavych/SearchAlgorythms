@@ -1,0 +1,23 @@
+package fielden.com.ua.serch;
+
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
+import fielden.com.ua.search.Edge;
+import fielden.com.ua.search.Vertex;
+
+public class TestEdge {
+
+	@Test
+	public void test_for_edges_equality() {
+		final Vertex v1 = new Vertex(1, "element");
+		final Vertex v2 = new Vertex(2, "element");
+		final Vertex v3 = new Vertex(1, "element");
+		final Edge e1 = new Edge(v1, v2);
+		final Edge e2 = new Edge(v2, v3);
+		final Edge e3 = new Edge(v3, v2);
+		assertTrue(e1.equals(e1)&&(e1.equals(e3))&&(!e2.equals(e1)));
+	}
+
+}

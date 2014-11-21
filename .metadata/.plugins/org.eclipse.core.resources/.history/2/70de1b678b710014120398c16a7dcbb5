@@ -1,0 +1,20 @@
+package fielden.com.ua.serch;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import fielden.com.ua.search.Vertex;
+
+public class TestVertex {
+
+	@Test
+	public void vertexEquality() {
+		final Vertex v1 = new Vertex(1, "element");
+		final Vertex v2 = new Vertex(2, "element");
+		final Vertex  v3 = new Vertex(1, "element");
+		assertFalse(v1.equals(v2));
+		assertsTrue(v1.equals(v3));
+	}
+
+}

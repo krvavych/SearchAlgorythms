@@ -1,11 +1,13 @@
 package fielden.com.ua.search;
 
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 public class Graph {
-	public Set<Vertex> verteces;
-	public Set<Edge> edges;
+	public Set<Vertex> verteces = new HashSet<Vertex>();
+	public Set<Edge> edges = new HashSet<Edge>();
 	public final  Map<Vertex, Set<Edge>> edgesOfVertex;
 	public final Map<Vertex, Set<Vertex>> adjacencyVertrxOfVertex;
 
@@ -29,13 +31,32 @@ public class Graph {
 			verteces.add(d);
 		}
 	}
-	public Graph(final Builder builder){
-		this.edges = builder.edges;
-		this.verteces = builder.vertexes;
-		this.edgesOfVertex = builder.edgesOfVertex;
-		this.adjacencyVertrxOfVertex = builder.adjacencyVertrxOfVertex;
+	public Graph(final Set<Edge> edges, final Set<Vertex> verteces, final Map<Vertex, Set<Edge>> edgesOfVertex, final Map<Vertex, Set<Vertex>> adjacencyVertexOfVertex){
+		this.edges = edges;
+		this.verteces = verteces;
+		this.edgesOfVertex = edgesOfVertex;
+		this.adjacencyVertrxOfVertex = adjacencyVertexOfVertex;
+	}
+	public void dfs(final Graph g, final Vertex v){
+	final Builder builder = new Builder();
+		final Iterator<Vertex> graph = new DeapthFirstIterator(g, v);
+		while (graph.hasNext()) {
+			final Vertex nextVertex = graph.next();
+			builder.visitor(nextVertex);
+		}
 	}
 
+	public void bfs(final Graph g, final Vertex v){
+		final Builder builder = new Builder();
+			final Iterator<Vertex> graph = new BreadthFirstIterator(g, v);
+			while (graph.hasNext()) {
+				final Vertex nextVertex = graph.next();
+				builder.visitor(nextVertex);
+			}
+		}
+
 	public static void main(final String[] args) {
+
 	}
+
 }

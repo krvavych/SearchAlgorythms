@@ -1,0 +1,52 @@
+package fielden.com.ua.serch;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+import org.junit.Test;
+
+import fielden.com.ua.search.Builder;
+import fielden.com.ua.search.DeapthFirstIterator;
+import fielden.com.ua.search.Edge;
+import fielden.com.ua.search.Graph;
+import fielden.com.ua.search.Vertex;
+
+public class testDFS {
+
+	@Test
+	public void DFS_should_work_correct() {
+		final Map<Vertex, Set<Vertex>> eMap = new HashMap<Vertex, Set<Vertex>>();
+		final Builder builder = new Builder();
+		final Set<Vertex> vertexs = new HashSet<Vertex>();
+		final Set<Edge> edges = new HashSet<Edge>();
+		final Vertex v1 = builder.addVertex(1, "element", vertexs);
+		final Vertex v2 = builder.addVertex(2, "element", vertexs);
+		final Vertex v3 = builder.addVertex(3, "element", vertexs);
+		final Vertex v4 = builder.addVertex(4, "element", vertexs);
+		final Vertex v5 = builder.addVertex(5, "element", vertexs);
+		final Vertex v6 = builder.addVertex(6, "element", vertexs);
+		builder.addEdge(v1, v2, edges);
+		builder.addEdge(v2, v1, edges);
+		builder.addEdge(v3, v2, edges);
+		builder.addEdge(v2, v3, edges);
+		builder.addEdge(v4, v3, edges);
+		builder.addEdge(v3, v4, edges);
+		builder.addEdge(v2, v5, edges);
+		builder.addEdge(v5, v2, edges);
+		builder.addEdge(v6, v4, edges);
+		builder.addEdge(v4, v6, edges);
+		builder.creationAdjacencyLists(eMap, vertexs, edges);
+		final Graph g = new Graph(builder);
+		g.verteces = vertexs;
+		g.edges = edges;
+		g.dfs(g, v2);
+//		final Iterator<Vertex> graph = new DeapthFirstIterator(g, v2);
+//		while (graph.hasNext()) {
+//			System.out.println(graph.next().toString());
+//		}
+	}
+
+}
