@@ -11,23 +11,38 @@ public class Builder implements IVisitor {
 	private final Set<Vertex> vertexes = new HashSet<Vertex>();
 	private final Set<Edge> edges = new HashSet<Edge>();
 
+	public Set<Vertex> getVertex() {
+		return vertexes;
+	}
+
+	public Set<Edge> getEdges() {
+		return edges;
+	}
+
+	public Map<Vertex, Set<Edge>> getEdgesOfMap() {
+		return edgesOfVertex;
+	}
+
+	public Map<Vertex, Set<Vertex>> getVertexOfMap() {
+		return adjacencyVertrxOfVertex;
+	}
+
 	public Builder addEdge(final Vertex s, final Vertex d) {
 		final Edge edge = new Edge(s, d);
 		if (!edges.contains(edge)) {
 			edges.add(edge);
 		} else {
-			System.out.println("This edge already exists");
+			throw new IllegalArgumentException("This edge already exists");
 		}
 		return this;
 	}
 
-	public Vertex addVertex(final int id, final Object element,
-			final Set<Vertex> vertexes) {
+	public Vertex addVertex(final int id, final Object element) {
 		final Vertex vertex = new Vertex(id, element);
 		if (!vertexes.contains(vertex)) {
 			vertexes.add(vertex);
 		} else {
-			System.out.println("This vertex already exists");
+			throw new IllegalArgumentException("This vertex already exists");
 		}
 		return vertex;
 	}
@@ -73,9 +88,15 @@ public class Builder implements IVisitor {
 		return this;
 	}
 
+	public Graph build(final Builder builder) {
+		final Graph g = new Graph(builder.edges, builder.vertexes,
+				builder.edgesOfVertex, builder.adjacencyVertrxOfVertex);
+		return g;
+	}
+
 	@Override
 	public void visitor(final Vertex vertex) {
-		System.out.println( vertex.getElement().toString().toUpperCase());
+		System.out.println(vertex.getElement().toString().toUpperCase());
 	}
 
 }

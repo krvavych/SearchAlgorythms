@@ -1,0 +1,106 @@
+package fielden.com.ua.search;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+public class Builder implements IVisitor {
+	private Map<Vertex, Set<Edge>> edgesOfVertex = new HashMap<Vertex, Set<Edge>>();
+	private Map<Vertex, Set<Vertex>> adjacencyVertrxOfVertex = new HashMap<Vertex, Set<Vertex>>();
+	private final Set<Vertex> vertexes = new HashSet<Vertex>();
+	private final Set<Edge> edges = new HashSet<Edge>();
+
+	private Set<Vertex> getVertex(){
+		return vertexes;
+	}
+	
+	private Set<Edge> getEdges() {
+		return edges;
+	}
+	
+	private Map<Vertex, Set<Edge>> getEdgesOfMap() {
+		return edgesOfVertex;
+	}
+	
+	private Map<Vertex, Set<Vertex>> getVertexOfMap(){
+		return adjacencyVertrxOfVertex;
+	}
+
+	public Builder addEdge(final Vertex s, final Vertex d) {
+		final Edge edge = new Edge(s, d);
+		if (!edges.contains(edge)) {
+			edges.add(edge);
+		} else {
+			System.out.println("This edge already exists");
+		}
+		return this;
+	}
+
+	public Vertex addVertex(final int id, final Object element) {
+		final Vertex vertex = new Vertex(id, element);
+		if (!vertexes.contains(vertex)) {
+			vertexes.add(vertex);
+		} else {
+			System.out.println("This vertex already exists");
+		}
+		return vertex;
+	}
+
+	public boolean contains(final Set<Vertex> set, final Vertex obj) {
+		for (final Vertex object : set) {
+			if (obj == object) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public Builder creationAdjacencyLists(final Map<Vertex, Set<Vertex>> map,
+			final Set<Vertex> vertexes, final Set<Edge> edges) {
+		for (final Vertex vertex : vertexes) {
+			final Set<Vertex> adjacencyVertrxes = new HashSet<Vertex>();
+			for (final Edge edge : edges) {
+				if (edge.getSourse() == vertex) {
+					adjacencyVertrxes.add(edge.getDestination());
+				}
+			}
+			map.put(vertex, adjacencyVertrxes);
+		}
+		adjacencyVertrxOfVertex = map;
+		return this;
+	}
+
+	public Builder creationEdgesOfVertex(final Map<Vertex, Set<Edge>> map,
+			final Set<Vertex> vertexes, final Set<Edge> edges) {
+		for (final Vertex vertex : vertexes) {
+			final Set<Edge> edgesOfVertrxes = new HashSet<Edge>();
+			for (final Edge edge : edges) {
+				if (edge.getSourse() == vertex) {
+					edgesOfVertrxes.add(edge);
+				}
+			}
+			map.put(vertex, edgesOfVertrxes);
+		}
+		edgesOfVertex = map;
+		return this;
+	}
+
+	public Graph build(final Builder builder, Graph g) {
+		final Set<Edge> edges = builder.edges;
+		final Set<Vertex> verteces = builder.vertexes;
+		final Map<Vertex, Set<Edge>> edgesOfVertex = builder.edgesOfVertex;
+		final Map<Vertex, Set<Vertex>> adjacencyVertexOfVertex = builder.adjacencyVertrxOfVertex;
+		g = new Graph(edges, verteces, edgesOfVertex,
+				adjacencyVertexOfVertex);
+		return g;
+	}
+
+	@Override
+	public void visitor(final Vertex vertex) {
+		System.out.println(vertex.getElement().toString().toUpperCase());
+	}
+
+}

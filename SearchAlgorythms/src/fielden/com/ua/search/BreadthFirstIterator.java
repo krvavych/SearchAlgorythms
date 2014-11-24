@@ -14,7 +14,7 @@ public class BreadthFirstIterator implements Iterator<Vertex> {
 
 	public BreadthFirstIterator(final Graph g, final Vertex startingVertex) {
 		this.graph = g;
-		for (final Vertex vertex : graph.verteces) {
+		for (final Vertex vertex : graph.getVerteces()) {
 			if (vertex == startingVertex) {
 				this.queue.add(vertex);
 				this.visited.add(vertex);
@@ -35,9 +35,9 @@ public class BreadthFirstIterator implements Iterator<Vertex> {
 	@Override
 	public Vertex next() {
 		final Builder builder = new Builder();
-		builder.creationAdjacencyLists(graph.adjacencyVertrxOfVertex, graph.verteces, graph.edges);
+		builder.creationAdjacencyLists(graph.getAdjacencyVertrxOfVertex(), graph.getVerteces(), graph.getEdges());
 		final Vertex next = queue.remove();
-		for (final Vertex neighbor : graph.adjacencyVertrxOfVertex.get(next)) {
+		for (final Vertex neighbor : graph.getAdjacencyVertrxOfVertex().get(next)) {
 			if (!this.visited.contains(neighbor)) {
 				this.queue.add(neighbor);
 				this.visited.add(neighbor);

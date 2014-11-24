@@ -1,14 +1,8 @@
 package fielden.com.ua.serch;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
 import org.junit.Test;
 
 import fielden.com.ua.search.Builder;
-import fielden.com.ua.search.Edge;
 import fielden.com.ua.search.Graph;
 import fielden.com.ua.search.Vertex;
 
@@ -16,16 +10,13 @@ public class TestDfs {
 
 	@Test
 	public void DFS_should_work_correctly() {
-		final Map<Vertex, Set<Vertex>> eMap = new HashMap<Vertex, Set<Vertex>>();
 		final Builder builder = new Builder();
-		final Set<Vertex> vertexs = new HashSet<Vertex>();
-		final Set<Edge> edges = new HashSet<Edge>();
-		final Vertex v1 = builder.addVertex(1, "element1", vertexs);
-		final Vertex v2 = builder.addVertex(2, "element2", vertexs);
-		final Vertex v3 = builder.addVertex(3, "element3", vertexs);
-		final Vertex v4 = builder.addVertex(4, "element4", vertexs);
-		final Vertex v5 = builder.addVertex(5, "element5", vertexs);
-		final Vertex v6 = builder.addVertex(6, "element6", vertexs);
+		final Vertex v1 = builder.addVertex(1, "element1");
+		final Vertex v2 = builder.addVertex(2, "element2");
+		final Vertex v3 = builder.addVertex(3, "element3");
+		final Vertex v4 = builder.addVertex(4, "element4");
+		final Vertex v5 = builder.addVertex(5, "element5");
+		final Vertex v6 = builder.addVertex(6, "element6");
 		builder.addEdge(v1, v2).
 		addEdge(v2, v1).
 		addEdge(v3, v2).
@@ -36,11 +27,9 @@ public class TestDfs {
 		addEdge(v5, v2).
 		addEdge(v6, v4).
 		addEdge(v4, v6);
-		builder.creationAdjacencyLists(eMap, vertexs, edges);
-		final Graph g = new Graph(builder);
-		g.verteces = vertexs;
-		g.edges = edges;
-		g.dfs(g, v1);
+		builder.creationAdjacencyLists(builder.getVertexOfMap(), builder.getVertex(), builder.getEdges());
+		final Graph graph = builder.build(builder);
+		graph.dfs(graph, v1);
 	}
 
 }

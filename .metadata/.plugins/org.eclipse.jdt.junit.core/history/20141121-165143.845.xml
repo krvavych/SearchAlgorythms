@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestEdge" project="SearchAlgorythms" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="fielden.com.ua.serch.TestEdge" time="0.003">
+    <testcase name="test_for_edges_hashCode" classname="fielden.com.ua.serch.TestEdge" time="0.002"/>
+    <testcase name="test_for_edges_equality" classname="fielden.com.ua.serch.TestEdge" time="0.001"/>
+  </testsuite>
+</testrun>
