@@ -1,0 +1,34 @@
+package fielden.com.ua.serch;
+
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
+import fielden.com.ua.search.Builder;
+import fielden.com.ua.search.Graph;
+import fielden.com.ua.search.Vertex;
+
+public class TestGraph {
+
+	@Test
+	public void graph_should_be_create_correct() {
+		final Builder builder = new Builder();
+		final Vertex v1 = builder.addVertex(1, "Ann");
+		final Vertex v2 = builder.addVertex(2, "Sem");
+		final Vertex v3 = builder.addVertex(3, "Tom");
+		builder.addEdge(v1, v2).addEdge(v2, v1).addEdge(v2, v3).addEdge(v3, v2);
+		builder.creationAdjacencyLists(builder.getVertexOfMap(),
+				builder.getVertex(), builder.getEdges());
+		builder.creationEdgesOfVertex(builder.getEdgesOfMap(),
+				builder.getVertex(), builder.getEdges());
+		final Graph g = builder.build(builder);
+		assertTrue(!g.edges.isEmpty() && !g.verteces.isEmpty()
+				&& !g.adjacencyVertrxOfVertex.isEmpty()
+				&& !g.edgesOfVertex.isEmpty());
+		assertTrue(g.adjacencyVertrxOfVertex.equals(builder.getVertexOfMap())
+				&& g.edges.equals(builder.getEdges())
+				&& g.edgesOfVertex.equals(builder.getEdgesOfMap())
+				&& g.verteces.equals(builder.getVertex()));
+	}
+
+}

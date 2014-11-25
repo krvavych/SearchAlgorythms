@@ -1,0 +1,152 @@
+package fielden.com.ua.search;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+public class Graph {
+	private Set<Vertex> verteces = new HashSet<Vertex>();
+	private final Set<Edge> edges;
+	private final Map<Vertex, Set<Edge>> edgesOfVertex;
+	private final Map<Vertex, Set<Vertex>> adjacencyVertrxOfVertex;
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime
+				* result
+				+ ((adjacencyVertrxOfVertex == null) ? 0
+						: adjacencyVertrxOfVertex.hashCode());
+		result = prime * result + ((edges == null) ? 0 : edges.hashCode());
+		result = prime * result
+				+ ((edgesOfVertex == null) ? 0 : edgesOfVertex.hashCode());
+		result = prime * result
+				+ ((verteces == null) ? 0 : verteces.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(final Object thatGraph) {
+		if (this == thatGraph) {
+			return true;
+		}
+		if (thatGraph == null) {
+			return false;
+		}
+		if (getClass() != thatGraph.getClass()) {
+			return false;
+		}
+		final Graph other = (Graph) thatGraph;
+		if (adjacencyVertrxOfVertex == null) {
+			if (other.adjacencyVertrxOfVertex != null) {
+				return false;
+			}
+		} else if (!adjacencyVertrxOfVertex
+				.equals(other.adjacencyVertrxOfVertex)) {
+			return false;
+		}
+		if (edges == null) {
+			if (other.edges != null) {
+				return false;
+			}
+		} else if (!edges.equals(other.edges)) {
+			return false;
+		}
+		if (edgesOfVertex == null) {
+			if (other.edgesOfVertex != null) {
+				return false;
+			}
+		} else if (!edgesOfVertex.equals(other.edgesOfVertex)) {
+			return false;
+		}
+		if (verteces == null) {
+			if (other.verteces != null) {
+				return false;
+			}
+		} else if (!verteces.equals(other.verteces)) {
+			return false;
+		}
+		return true;
+	}
+
+	public Set<Vertex> getVerteces() {
+		return verteces;
+	}
+
+	public Set<Edge> getEdges() {
+		return edges;
+	}
+
+	public Map<Vertex, Set<Edge>> getEdgesOfVertex() {
+		return edgesOfVertex;
+	}
+
+	public Map<Vertex, Set<Vertex>> getAdjacencyVertrxOfVertex() {
+		return adjacencyVertrxOfVertex;
+	}
+
+	public boolean contains(final Vertex vertex) {
+		return verteces.contains(vertex);
+	}
+
+	public void addEdge(final Vertex s, final Vertex d) {
+		final Edge edge = new Edge(s, d);
+		if (!edges.contains(edge)) {
+			edges.add(edge);
+		}
+		if (!verteces.contains(s)) {
+			verteces.add(s);
+		}
+		if (!verteces.contains(d)) {
+			verteces.add(d);
+		}
+	}
+
+	public Graph(final Set<Edge> edges, final Set<Vertex> verteces,
+			final Map<Vertex, Set<Edge>> edgesOfVertex,
+			final Map<Vertex, Set<Vertex>> adjacencyVertexOfVertex) {
+		for (final Edge edge : edges) {
+			if(!verteces.contains(edge.getSourse())||!verteces.contains(edge.getDestination())){
+				throw new IllegalArgumentException("Wrong data for graph building");
+			}
+		}
+		this.edges = edges;
+		this.verteces = verteces;
+		this.edgesOfVertex = edgesOfVertex;
+		this.adjacencyVertrxOfVertex = adjacencyVertexOfVertex;
+	}
+
+	public void dfs(final Graph g, final Vertex v) {
+		final Builder builder = new Builder();
+		final Iterator<Vertex> graph = new DeapthFirstIterator(g, v);
+		while (graph.hasNext()) {
+			final Vertex nextVertex = graph.next();
+			builder.visitor(nextVertex);
+		}
+	}
+
+	public void bfs(final Graph g, final Vertex v) {
+		final Builder builder = new Builder();
+		final Iterator<Vertex> graph = new BreadthFirstIterator(g, v);
+		while (graph.hasNext()) {
+			final Vertex nextVertex = graph.next();
+			builder.visitor(nextVertex);
+		}
+	}
+
+	public static void main(final String[] args) {
+		final Builder builder = new Builder();
+		final Vertex v1 = builder.addVertex(1, "Ann");
+		final Vertex v2 = builder.addVertex(2, "Sem");
+		final Vertex v3 = builder.addVertex(3, "Tom");
+		builder.addEdge(v1, v2).addEdge(v2, v1).addEdge(v2, v3).addEdge(v3, v2);
+		builder.creationAdjacencyLists(builder.getVertexOfMap(),
+				builder.getVertex(), builder.getEdges());
+		builder.creationEdgesOfVertex(builder.getEdgesOfMap(),
+				builder.getVertex(), builder.getEdges());
+		final Graph g = builder.build(builder);
+		g.dfs(g, v2);
+	}
+}

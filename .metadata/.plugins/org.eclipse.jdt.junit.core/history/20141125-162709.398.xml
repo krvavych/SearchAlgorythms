@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestBuilder" project="SearchAlgorythms" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="fielden.com.ua.serch.TestBuilder" time="0.0">
+    <testcase name="adjacency_list_should_be_create_correct" classname="fielden.com.ua.serch.TestBuilder" time="0.0"/>
+    <testcase name="list_of_edges_of_vertex_should_be_create_correct" classname="fielden.com.ua.serch.TestBuilder" time="0.0"/>
+    <testcase name="it_should_be_imposible_to_add_the_same_vertex" classname="fielden.com.ua.serch.TestBuilder" time="0.0"/>
+    <testcase name="it_should_be_impossible_to_add_edge_with_null_verteves" classname="fielden.com.ua.serch.TestBuilder" time="0.0"/>
+    <testcase name="it_should_be_imposible_to_add_the_same_edge" classname="fielden.com.ua.serch.TestBuilder" time="0.0"/>
+  </testsuite>
+</testrun>

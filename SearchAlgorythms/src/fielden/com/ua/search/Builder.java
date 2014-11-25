@@ -29,6 +29,9 @@ public class Builder implements IVisitor {
 
 	public Builder addEdge(final Vertex s, final Vertex d) {
 		final Edge edge = new Edge(s, d);
+		if (s == null || d == null) {
+			throw new IllegalArgumentException("Vertexes couldn`t be null");
+		}
 		if (!edges.contains(edge)) {
 			edges.add(edge);
 		} else {
@@ -89,6 +92,16 @@ public class Builder implements IVisitor {
 	}
 
 	public Graph build(final Builder builder) {
+		if (vertexes.isEmpty()) {
+			throw new IllegalArgumentException("Graph must have vertexes");
+		}
+		for (final Edge edge : edges) {
+			if (!vertexes.contains(edge.getSourse())
+					|| !vertexes.contains(edge.getDestination())) {
+				throw new IllegalArgumentException(
+						"Wrong data for graph building");
+			}
+		}
 		final Graph g = new Graph(builder.edges, builder.vertexes,
 				builder.edgesOfVertex, builder.adjacencyVertrxOfVertex);
 		return g;
@@ -98,5 +111,4 @@ public class Builder implements IVisitor {
 	public void visitor(final Vertex vertex) {
 		System.out.println(vertex.getElement().toString().toUpperCase());
 	}
-
 }

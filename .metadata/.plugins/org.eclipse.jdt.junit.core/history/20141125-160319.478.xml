@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestGraph" project="SearchAlgorythms" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="fielden.com.ua.serch.TestGraph" time="0.0">
+    <testcase name="graph_created_by_builder_should_be_equal_to_hand_createg_graph" classname="fielden.com.ua.serch.TestGraph" time="0.0"/>
+    <testcase name="graph_should_be_create_correct" classname="fielden.com.ua.serch.TestGraph" time="0.0"/>
+  </testsuite>
+</testrun>

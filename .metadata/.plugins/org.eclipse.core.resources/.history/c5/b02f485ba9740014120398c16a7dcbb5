@@ -1,0 +1,29 @@
+package fielden.com.ua.serch;
+
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+import org.junit.Test;
+
+import fielden.com.ua.search.Edge;
+import fielden.com.ua.search.Graph;
+import fielden.com.ua.search.Vertex;
+
+public class TestGraph {
+
+	@Test
+	public void graph_should_be_create_correct() {
+		final Set<Vertex> vertexs1 = new HashSet<Vertex>();
+		final Set<Edge> edges1 = new HashSet<Edge>();
+		final Map<Vertex, Set<Edge>> edgesOfVertex1;
+		final Map<Vertex, Set<Vertex>> adjacencyVertrxOfVertex1;
+		final Vertex v1 = new Vertex(1, "element");
+		final Vertex v2 = new Vertex(2, "element");
+		vertexs1.add(v1);
+		vertexs1.add(v2);
+		edges1.add(new Edge(v1, v2));
+		final Graph graph = new Graph(edges1, verteces1, edgesOfVertex1, adjacencyVertexOfVertex1);
+		}
+
+}

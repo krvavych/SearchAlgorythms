@@ -1,13 +1,12 @@
 package fielden.com.ua.search;
 
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 public class Graph {
-	private Set<Vertex> verteces = new HashSet<Vertex>();
-	private Set<Edge> edges = new HashSet<Edge>();
+	private final Set<Vertex> verteces;
+	private final Set<Edge> edges;
 	private final Map<Vertex, Set<Edge>> edgesOfVertex;
 	private final Map<Vertex, Set<Vertex>> adjacencyVertrxOfVertex;
 
@@ -61,11 +60,7 @@ public class Graph {
 		} else if (!edgesOfVertex.equals(other.edgesOfVertex)) {
 			return false;
 		}
-		if (verteces == null) {
-			if (other.verteces != null) {
-				return false;
-			}
-		} else if (!verteces.equals(other.verteces)) {
+		if (!verteces.equals(other.verteces)) {
 			return false;
 		}
 		return true;
@@ -91,22 +86,16 @@ public class Graph {
 		return verteces.contains(vertex);
 	}
 
-	public void addEdge(final Vertex s, final Vertex d) {
-		final Edge edge = new Edge(s, d);
-		if (!edges.contains(edge)) {
-			edges.add(edge);
-		}
-		if (!verteces.contains(s)) {
-			verteces.add(s);
-		}
-		if (!verteces.contains(d)) {
-			verteces.add(d);
-		}
-	}
-
 	public Graph(final Set<Edge> edges, final Set<Vertex> verteces,
 			final Map<Vertex, Set<Edge>> edgesOfVertex,
 			final Map<Vertex, Set<Vertex>> adjacencyVertexOfVertex) {
+		for (final Edge edge : edges) {
+			if (!verteces.contains(edge.getSourse())
+					|| !verteces.contains(edge.getDestination())) {
+				throw new IllegalArgumentException(
+						"Wrong data for graph building");
+			}
+		}
 		this.edges = edges;
 		this.verteces = verteces;
 		this.edgesOfVertex = edgesOfVertex;

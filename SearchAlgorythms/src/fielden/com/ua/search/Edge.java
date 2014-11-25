@@ -12,6 +12,9 @@ public class Edge {
 	}
 
 	public Edge(final Vertex sourse, final Vertex destination) {
+		if(sourse == null || destination == null){
+			throw new IllegalArgumentException("Veretes shuuld  be not null");
+		}
 		this.sourse = sourse;
 		this.destination = destination;
 	}
@@ -31,25 +34,14 @@ public class Edge {
 		if (this == thatEdge) {
 			return true;
 		}
-		if (thatEdge == null) {
-			return false;
-		}
 		if (getClass() != thatEdge.getClass()) {
 			return false;
 		}
 		final Edge other = (Edge) thatEdge;
-		if (destination == null) {
-			if (other.destination != null) {
-				return false;
-			}
-		} else if (!destination.equals(other.destination)) {
+		if (!destination.equals(other.destination)) {
 			return false;
 		}
-		if (sourse == null) {
-			if (other.sourse != null) {
-				return false;
-			}
-		} else if (!sourse.equals(other.sourse)) {
+		if (!sourse.equals(other.sourse)) {
 			return false;
 		}
 		return true;
