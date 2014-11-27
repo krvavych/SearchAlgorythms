@@ -455,3 +455,110 @@ Java Model Exception: Java Model Status [Unknown javadoc format for TODO {key=Lc
 	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:166)
 !SUBENTRY 1 org.eclipse.jdt.core 4 1009 2014-11-18 17:10:02.403
 !MESSAGE Unknown javadoc format for TODO {key=Lcom/sun/xml/internal/bind/v2/TODO;} [in TODO.class [in com.sun.xml.internal.bind.v2 [in /usr/lib/jvm/java-8-oracle/jre/lib/rt.jar]]]
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2014-11-27 11:17:41.122
+!MESSAGE Can't handle %s as parent of completion location.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2014-11-27 11:17:42.803
+!MESSAGE Can't handle %s as parent of completion location.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2014-11-27 11:17:44.340
+!MESSAGE Can't handle %s as parent of completion location.
+
+!ENTRY org.eclipse.jface.text 2 0 2014-11-27 11:17:44.407
+!MESSAGE 
+!STACK 0
+org.eclipse.text.edits.MalformedTreeException: Range of child edit lies outside of parent edit
+	at org.eclipse.text.edits.TextEdit.internalAdd(TextEdit.java:777)
+	at org.eclipse.text.edits.TextEdit.addChild(TextEdit.java:335)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.addEdit(ASTRewriteAnalyzer.java:326)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.preVisit(ASTRewriteAnalyzer.java:1624)
+	at org.eclipse.jdt.core.dom.ASTVisitor.preVisit2(ASTVisitor.java:167)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2709)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.voidVisit(ASTRewriteAnalyzer.java:429)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.doTextRemoveAndVisit(ASTRewriteAnalyzer.java:400)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.rewriteBodyNode(ASTRewriteAnalyzer.java:931)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.visit(ASTRewriteAnalyzer.java:2736)
+	at org.eclipse.jdt.core.dom.IfStatement.accept0(IfStatement.java:187)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.rewrite.ASTRewrite.internalRewriteAST(ASTRewrite.java:297)
+	at org.eclipse.jdt.core.dom.rewrite.ASTRewrite.rewriteAST(ASTRewrite.java:286)
+	at org.eclipse.jdt.ui.text.java.correction.ASTRewriteCorrectionProposal.addEdits(ASTRewriteCorrectionProposal.java:116)
+	at org.eclipse.jdt.ui.text.java.correction.CUCorrectionProposal.createTextChange(CUCorrectionProposal.java:234)
+	at org.eclipse.jdt.ui.text.java.correction.CUCorrectionProposal.createChange(CUCorrectionProposal.java:244)
+	at org.eclipse.jdt.ui.text.java.correction.ChangeCorrectionProposal.getChange(ChangeCorrectionProposal.java:360)
+	at org.eclipse.jdt.ui.text.java.correction.CUCorrectionProposal.getTextChange(CUCorrectionProposal.java:254)
+	at org.eclipse.jdt.ui.text.java.correction.CUCorrectionProposal.getAdditionalProposalInfo(CUCorrectionProposal.java:141)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2014-11-27 11:17:47.348
+!MESSAGE Can't handle %s as parent of completion location.
+
+!ENTRY org.eclipse.jface.text 2 0 2014-11-27 11:17:47.402
+!MESSAGE 
+!STACK 0
+org.eclipse.text.edits.MalformedTreeException: Range of child edit lies outside of parent edit
+	at org.eclipse.text.edits.TextEdit.internalAdd(TextEdit.java:777)
+	at org.eclipse.text.edits.TextEdit.addChild(TextEdit.java:335)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.addEdit(ASTRewriteAnalyzer.java:326)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.preVisit(ASTRewriteAnalyzer.java:1624)
+	at org.eclipse.jdt.core.dom.ASTVisitor.preVisit2(ASTVisitor.java:167)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2709)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.voidVisit(ASTRewriteAnalyzer.java:429)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.doTextRemoveAndVisit(ASTRewriteAnalyzer.java:400)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.rewriteBodyNode(ASTRewriteAnalyzer.java:931)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.visit(ASTRewriteAnalyzer.java:2736)
+	at org.eclipse.jdt.core.dom.IfStatement.accept0(IfStatement.java:187)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.rewrite.ASTRewrite.internalRewriteAST(ASTRewrite.java:297)
+	at org.eclipse.jdt.core.dom.rewrite.ASTRewrite.rewriteAST(ASTRewrite.java:286)
+	at org.eclipse.jdt.ui.text.java.correction.ASTRewriteCorrectionProposal.addEdits(ASTRewriteCorrectionProposal.java:116)
+	at org.eclipse.jdt.ui.text.java.correction.CUCorrectionProposal.createTextChange(CUCorrectionProposal.java:234)
+	at org.eclipse.jdt.ui.text.java.correction.CUCorrectionProposal.createChange(CUCorrectionProposal.java:244)
+	at org.eclipse.jdt.ui.text.java.correction.ChangeCorrectionProposal.getChange(ChangeCorrectionProposal.java:360)
+	at org.eclipse.jdt.ui.text.java.correction.CUCorrectionProposal.getTextChange(CUCorrectionProposal.java:254)
+	at org.eclipse.jdt.ui.text.java.correction.CUCorrectionProposal.getAdditionalProposalInfo(CUCorrectionProposal.java:141)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2014-11-27 11:17:49.387
+!MESSAGE Can't handle %s as parent of completion location.
+
+!ENTRY org.eclipse.jface.text 2 0 2014-11-27 11:17:49.461
+!MESSAGE 
+!STACK 0
+org.eclipse.text.edits.MalformedTreeException: Range of child edit lies outside of parent edit
+	at org.eclipse.text.edits.TextEdit.internalAdd(TextEdit.java:777)
+	at org.eclipse.text.edits.TextEdit.addChild(TextEdit.java:335)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.addEdit(ASTRewriteAnalyzer.java:326)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.preVisit(ASTRewriteAnalyzer.java:1624)
+	at org.eclipse.jdt.core.dom.ASTVisitor.preVisit2(ASTVisitor.java:167)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2709)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.voidVisit(ASTRewriteAnalyzer.java:429)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.doTextRemoveAndVisit(ASTRewriteAnalyzer.java:400)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.rewriteBodyNode(ASTRewriteAnalyzer.java:931)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.visit(ASTRewriteAnalyzer.java:2736)
+	at org.eclipse.jdt.core.dom.IfStatement.accept0(IfStatement.java:187)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.rewrite.ASTRewrite.internalRewriteAST(ASTRewrite.java:297)
+	at org.eclipse.jdt.core.dom.rewrite.ASTRewrite.rewriteAST(ASTRewrite.java:286)
+	at org.eclipse.jdt.ui.text.java.correction.ASTRewriteCorrectionProposal.addEdits(ASTRewriteCorrectionProposal.java:116)
+	at org.eclipse.jdt.ui.text.java.correction.CUCorrectionProposal.createTextChange(CUCorrectionProposal.java:234)
+	at org.eclipse.jdt.ui.text.java.correction.CUCorrectionProposal.createChange(CUCorrectionProposal.java:244)
+	at org.eclipse.jdt.ui.text.java.correction.ChangeCorrectionProposal.getChange(ChangeCorrectionProposal.java:360)
+	at org.eclipse.jdt.ui.text.java.correction.CUCorrectionProposal.getTextChange(CUCorrectionProposal.java:254)
+	at org.eclipse.jdt.ui.text.java.correction.CUCorrectionProposal.getAdditionalProposalInfo(CUCorrectionProposal.java:141)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2014-11-27 11:17:51.444
+!MESSAGE Can't handle %s as parent of completion location.
+
+!ENTRY org.eclipse.jface.text 2 0 2014-11-27 11:17:55.057
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.jdt.ui.text.java.correction.CUCorrectionProposal.getAdditionalProposalInfo(CUCorrectionProposal.java:142)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)

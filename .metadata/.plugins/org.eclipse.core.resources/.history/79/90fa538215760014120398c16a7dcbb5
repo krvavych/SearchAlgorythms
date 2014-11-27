@@ -21,6 +21,7 @@ public class TestBuilder {
 			builder.addEdge(sourse, destination);
 			fail();
 		} catch (final Exception e) {
+
 		}
 	}
 
@@ -33,11 +34,13 @@ public class TestBuilder {
 			builder.addVertex(1, "element2");
 			fail();
 		} catch (final Exception e) {
+
 		}
+
 	}
 
 	@Test
-	public void adjacency_list_should_be_create_correctly() {
+	public void adjacency_list_should_be_create_correct() {
 		final Builder builder = new Builder();
 		final Vertex v1 = builder.addVertex(1, "element");
 		final Vertex v2 = builder.addVertex(2, "element");
@@ -69,35 +72,6 @@ public class TestBuilder {
 	}
 
 	@Test
-	public void it_should_be_impossible_to_create_adjacrncy_list_from_wrong_input_data() {
-		final Builder builder = new Builder();
-		builder.addVertex(1, 1);
-		builder.addVertex(2, 2);
-		builder.addEdge(new Vertex(3, 3), new Vertex(4, 4));
-		try {
-			builder.creationAdjacencyLists(builder.getVertexOfMap(),
-					builder.getVertex(), builder.getEdges());
-			fail();
-		} catch (final Exception c) {
-
-		}
-	}
-
-	@Test
-	public void it_should_be_impossible_to_create_edgesOfVertev_from_wrond_data() {
-		final Builder builder = new Builder();
-		builder.addVertex(1, "element");
-		builder.addVertex(2, "element");
-		builder.addEdge(new Vertex(3, "element"), new Vertex(4, "element"));
-		try {
-			builder.creationEdgesOfVertex(builder.getEdgesOfMap(),
-					builder.getVertex(), builder.getEdges());
-			fail();
-		} catch (final Exception a) {
-		}
-	}
-
-	@Test
 	public void it_should_be_impossible_to_add_edge_with_null_verteves() {
 		final Builder builder = new Builder();
 		try {
@@ -116,6 +90,7 @@ public class TestBuilder {
 			builder.build();
 			fail();
 		} catch (final Exception e) {
+
 		}
 	}
 
@@ -131,4 +106,5 @@ public class TestBuilder {
 		} catch (final Exception e) {
 		}
 	}
+
 }

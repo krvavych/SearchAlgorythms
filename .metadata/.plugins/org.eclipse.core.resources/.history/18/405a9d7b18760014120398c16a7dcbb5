@@ -74,27 +74,27 @@ public class TestBuilder {
 		builder.addVertex(1, 1);
 		builder.addVertex(2, 2);
 		builder.addEdge(new Vertex(3, 3), new Vertex(4, 4));
-		try {
-			builder.creationAdjacencyLists(builder.getVertexOfMap(),
-					builder.getVertex(), builder.getEdges());
+		try{
+			builder.creationAdjacencyLists(builder.getVertexOfMap(), builder.getVertex(), builder.getEdges());
 			fail();
-		} catch (final Exception c) {
+		}catch (final Exception c){
 
 		}
 	}
 
 	@Test
-	public void it_should_be_impossible_to_create_edgesOfVertev_from_wrond_data() {
-		final Builder builder = new Builder();
+	public void it_should_be_impossible_to_create_edgesOfVertev_from_wrond_data(){
+		final Builder builder;
 		builder.addVertex(1, "element");
 		builder.addVertex(2, "element");
 		builder.addEdge(new Vertex(3, "element"), new Vertex(4, "element"));
-		try {
-			builder.creationEdgesOfVertex(builder.getEdgesOfMap(),
-					builder.getVertex(), builder.getEdges());
+		try{
+			builder.creationEdgesOfVertex(builder.getEdgesOfMap(), builder.getVertex(), builder.getEdges());
 			fail();
-		} catch (final Exception a) {
+		}catch (Exception a){
+			
 		}
+
 	}
 
 	@Test
@@ -116,6 +116,7 @@ public class TestBuilder {
 			builder.build();
 			fail();
 		} catch (final Exception e) {
+
 		}
 	}
 
@@ -131,4 +132,5 @@ public class TestBuilder {
 		} catch (final Exception e) {
 		}
 	}
+
 }

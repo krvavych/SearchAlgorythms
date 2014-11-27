@@ -35,7 +35,7 @@ public class TestGraph {
 	}
 
 	@Test
-	public void graph_should_not_have_null_set_of_verteces() {
+	public void graph_should_not_have_null_verteces() {
 		try {
 			new Graph(null, null);
 			fail();

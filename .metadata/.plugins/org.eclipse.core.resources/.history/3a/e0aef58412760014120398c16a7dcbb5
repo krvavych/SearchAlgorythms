@@ -14,9 +14,7 @@ public class TestVertex {
 		final Vertex v1 = new Vertex(1, "element");
 		final Vertex v2 = new Vertex(2, "element");
 		final Vertex v3 = new Vertex(1, "element");
-		final Vertex v4 = new Vertex(2, null);
 		assertFalse(v1.equals(v2));
-		assertTrue(v2.equals(v4));
 		assertTrue(v1.equals(v3));
 		if (v1.hashCode()==v3.hashCode()){
 			assertTrue(v1.equals(v3));

@@ -94,7 +94,9 @@ public class TestBuilder {
 					builder.getVertex(), builder.getEdges());
 			fail();
 		} catch (final Exception a) {
+
 		}
+
 	}
 
 	@Test
@@ -116,6 +118,7 @@ public class TestBuilder {
 			builder.build();
 			fail();
 		} catch (final Exception e) {
+
 		}
 	}
 
@@ -131,4 +134,5 @@ public class TestBuilder {
 		} catch (final Exception e) {
 		}
 	}
+
 }

@@ -48,10 +48,8 @@ public class Builder implements IVisitor {
 	public Builder creationAdjacencyLists(final Map<Vertex, Set<Vertex>> map,
 			final Set<Vertex> vertexes, final Set<Edge> edges) {
 		for (final Edge edge : edges) {
-			if (!vertexes.contains(edge.getSourse())
-					|| !vertexes.contains(edge.getDestination())) {
-				throw new IllegalArgumentException(
-						"Wrong sets of edges and vertexes");
+				if(!vertexes.contains(edge.getSourse())||!vertexes.contains(edge.getDestination())){
+					throw new IllegalArgumentException("Wrong sets of edses and vertexes");
 			}
 		}
 		for (final Vertex vertex : vertexes) {
@@ -69,13 +67,6 @@ public class Builder implements IVisitor {
 
 	public Builder creationEdgesOfVertex(final Map<Vertex, Set<Edge>> map,
 			final Set<Vertex> vertexes, final Set<Edge> edges) {
-		for (final Edge edge : edges) {
-			if (!vertexes.contains(edge.getSourse())
-					|| !vertexes.contains(edge.getDestination())) {
-				throw new IllegalArgumentException(
-						"Wrong sets of edges and vertexes");
-			}
-		}
 		for (final Vertex vertex : vertexes) {
 			final Set<Edge> edgesOfVertrxes = new HashSet<Edge>();
 			for (final Edge edge : edges) {
