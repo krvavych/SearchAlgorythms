@@ -28,7 +28,7 @@ public class TestDfs {
 		addEdge(v6, v4).
 		addEdge(v4, v6);
 		builder.creationAdjacencyLists(builder.getVertexOfMap(), builder.getVertex(), builder.getEdges());
-		final Graph graph = builder.build(builder);
+		final Graph graph = builder.build();
 		graph.dfs(graph, v1);
 	}
 
@@ -48,9 +48,7 @@ public class TestDfs {
 				.addEdge(v1, v4);
 		builder.creationAdjacencyLists(builder.getVertexOfMap(),
 				builder.getVertex(), builder.getEdges());
-		final Graph g = builder.build(builder);
+		final Graph g = builder.build();
 		g.bfs(g, v4);
 	}
-
-
 }

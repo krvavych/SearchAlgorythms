@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestEdge" project="SearchAlgorythms" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="fielden.com.ua.serch.TestEdge" time="0.001">
+    <testcase name="it_should_be_impossible_to_create_edges_with_null_vertexes" classname="fielden.com.ua.serch.TestEdge" time="0.001"/>
+    <testcase name="the_same_edge_should_be_equal" classname="fielden.com.ua.serch.TestEdge" time="0.0"/>
+    <testcase name="hashCodes_of_equal_vertexes_shoul_be_the_same" classname="fielden.com.ua.serch.TestEdge" time="0.0"/>
+  </testsuite>
+</testrun>

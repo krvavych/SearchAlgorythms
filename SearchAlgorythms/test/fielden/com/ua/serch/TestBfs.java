@@ -17,16 +17,20 @@ public class TestBfs {
 		final Vertex v4 = builder.addVertex(4, "element4");
 		final Vertex v5 = builder.addVertex(5, "element5");
 		final Vertex v6 = builder.addVertex(6, "element6");
-		builder.addEdge(v1, v2).addEdge(v2, v1).addEdge(v3, v1).addEdge(v1, v3)
-				.addEdge(v4, v3).addEdge(v3, v4).addEdge(v3, v5)
-				.addEdge(v5, v3).addEdge(v6, v4).addEdge(v4, v6);
-		builder.creationAdjacencyLists(builder.getVertexOfMap(),
-				builder.getVertex(), builder.getEdges());
-		final Graph g = builder.build(builder);
-		g.bfs(g, v4);
-
+		builder.addEdge(v1, v2).
+		addEdge(v2, v1).
+		addEdge(v3, v2).
+		addEdge(v2, v3).
+		addEdge(v4, v3).
+		addEdge(v3, v4).
+		addEdge(v2, v5).
+		addEdge(v5, v2).
+		addEdge(v6, v4).
+		addEdge(v4, v6);
+		builder.creationAdjacencyLists(builder.getVertexOfMap(), builder.getVertex(), builder.getEdges());
+		final Graph graph = builder.build();
+		graph.bfs(graph, v1);
 	}
-
 	@Test
 	public void Bfs_should_work_as_expected() {
 		final Builder builder = new Builder();
@@ -41,7 +45,7 @@ public class TestBfs {
 				.addEdge(v5, v3).addEdge(v6, v4).addEdge(v4, v6);
 		builder.creationAdjacencyLists(builder.getVertexOfMap(),
 				builder.getVertex(), builder.getEdges());
-		final Graph g = builder.build(builder);
+		final Graph g = builder.build();
 		g.bfs(g, v1);
 	}
 

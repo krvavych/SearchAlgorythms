@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestGraph" project="SearchAlgorythms" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="fielden.com.ua.serch.TestGraph" time="0.0">
+    <testcase name="graph_created_by_builder_should_be_equal_to_hand_createg_graph" classname="fielden.com.ua.serch.TestGraph" time="0.0"/>
+    <testcase name="graph_should_not_have_null_verteces" classname="fielden.com.ua.serch.TestGraph" time="0.0"/>
+    <testcase name="graph_should_not_have_edges_with_verteces_wich_donot_exist_in_setOfVertex" classname="fielden.com.ua.serch.TestGraph" time="0.0"/>
+  </testsuite>
+</testrun>

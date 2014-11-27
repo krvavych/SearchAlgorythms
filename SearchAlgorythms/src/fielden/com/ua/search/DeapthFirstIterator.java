@@ -16,11 +16,12 @@ public class DeapthFirstIterator implements Iterator<Vertex> {
 	public DeapthFirstIterator(final Graph g, final Vertex startingVertex) {
 		this.graph = g;
 		final Builder builder = new Builder();
-		builder.creationAdjacencyLists(graph.getAdjacencyVertrxOfVertex(), graph.getVerteces(), graph.getEdges());
-		this.stack.push(graph.getAdjacencyVertrxOfVertex().get(startingVertex).iterator());
+		builder.creationAdjacencyLists(graph.getAdjacencyVertrxOfVertex(),
+				graph.getVerteces(), graph.getEdges());
+		this.stack.push(graph.getAdjacencyVertrxOfVertex().get(startingVertex)
+				.iterator());
 		this.next = startingVertex;
 	}
-
 
 	@Override
 	public void remove() {
@@ -59,6 +60,7 @@ public class DeapthFirstIterator implements Iterator<Vertex> {
 
 			this.next = neighbors.next();
 		} while (this.visited.contains(this.next));
-		this.stack.push(this.graph.getAdjacencyVertrxOfVertex().get(this.next).iterator());
+		this.stack.push(this.graph.getAdjacencyVertrxOfVertex().get(this.next)
+				.iterator());
 	}
 }

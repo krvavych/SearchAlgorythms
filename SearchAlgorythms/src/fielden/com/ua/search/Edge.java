@@ -13,7 +13,7 @@ public class Edge {
 
 	public Edge(final Vertex sourse, final Vertex destination) {
 		if(sourse == null || destination == null){
-			throw new IllegalArgumentException("Veretes shuuld  be not null");
+			throw new IllegalArgumentException("Veretes should  be not null");
 		}
 		this.sourse = sourse;
 		this.destination = destination;

@@ -19,7 +19,6 @@ public class TestEdge {
 		final Edge e2 = new Edge(v2, v3);
 		final Edge e3 = new Edge(v3, v2);
 		assertTrue(e1.equals(e1) && (e1.equals(e3)) && (!e2.equals(e1)));
-
 	}
 
 	@Test
@@ -32,7 +31,6 @@ public class TestEdge {
 		final Edge e3 = new Edge(v3, v2);
 		assertTrue((e1.hashCode() == (e3.hashCode()))
 				&& (e2.hashCode() != (e1.hashCode())));
-
 	}
 
 	@Test

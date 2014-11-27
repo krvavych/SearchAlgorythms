@@ -3,9 +3,7 @@ package fielden.com.ua.serch;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import org.junit.Test;
@@ -21,20 +19,17 @@ public class TestGraph {
 	public void graph_created_by_builder_should_be_equal_to_hand_createg_graph() {
 		final Set<Vertex> vertexs = new HashSet<Vertex>();
 		final Set<Edge> edges = new HashSet<Edge>();
-		final Map<Vertex, Set<Edge>> edgesOfVertex = new HashMap<Vertex, Set<Edge>>();
-		final Map<Vertex, Set<Vertex>> adjacencyVertrxOfVertex = new HashMap<Vertex, Set<Vertex>>();
 		final Vertex v1 = new Vertex(1, "element");
 		final Vertex v2 = new Vertex(2, "element");
 		vertexs.add(v1);
 		vertexs.add(v2);
 		edges.add(new Edge(v1, v2));
-		final Graph graph = new Graph(edges, vertexs, edgesOfVertex, adjacencyVertrxOfVertex);
-
+		final Graph graph = new Graph(edges, vertexs);
 		final Builder builder = new Builder();
-		builder.addVertex(1, "element");
-		builder.addVertex(2, "element");
-		builder.addEdge(v1, v2);
-		final Graph buildGraph = builder.build(builder);
+		final Vertex v3 = builder.addVertex(1, "element");
+		final Vertex v4 = builder.addVertex(2, "element");
+		builder.addEdge(v3, v4);
+		final Graph buildGraph = builder.build();
 		assertTrue(graph.equals(buildGraph));
 		assertTrue(graph.hashCode() == buildGraph.hashCode());
 	}
@@ -42,10 +37,9 @@ public class TestGraph {
 	@Test
 	public void graph_should_not_have_null_verteces() {
 		try {
-			new Graph(null, null, null, null);
+			new Graph(null, null);
 			fail();
 		} catch (final Exception e) {
-
 		}
 	}
 
@@ -53,8 +47,6 @@ public class TestGraph {
 	public void graph_should_not_have_edges_with_verteces_wich_donot_exist_in_setOfVertex() {
 		final Set<Vertex> vertexs1 = new HashSet<Vertex>();
 		final Set<Edge> edges1 = new HashSet<Edge>();
-		final Map<Vertex, Set<Edge>> edgesOfVertex1 = new HashMap<Vertex, Set<Edge>>();
-		final Map<Vertex, Set<Vertex>> adjacencyVertrxOfVertex1 = new HashMap<Vertex, Set<Vertex>>();
 		final Vertex v1 = new Vertex(1, "element");
 		final Vertex v2 = new Vertex(2, "element");
 		final Vertex v3 = new Vertex(3, "element");
@@ -63,8 +55,7 @@ public class TestGraph {
 		edges1.add(new Edge(v1, v2));
 		edges1.add(new Edge(v1, v3));
 		try {
-			new Graph(edges1, vertexs1, edgesOfVertex1,
-					adjacencyVertrxOfVertex1);
+			new Graph(edges1, vertexs1);
 			fail();
 		} catch (final Exception e) {
 		}
