@@ -137,6 +137,5 @@ public class Graph {
 				.addEdge(v3, v5);
 		final Graph g = builder.build();
 		g.bfs(g, v1);
-		g.dfs(g, v1);
 	}
 }

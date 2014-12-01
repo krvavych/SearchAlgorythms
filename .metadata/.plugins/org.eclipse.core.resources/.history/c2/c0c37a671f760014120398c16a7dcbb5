@@ -3,8 +3,16 @@ package fielden.com.ua.search;
 public class Edge {
 	private final Vertex sourse, destination;
 
+	public Vertex getSourse() {
+		return sourse;
+	}
+
+	public Vertex getDestination() {
+		return destination;
+	}
+
 	public Edge(final Vertex sourse, final Vertex destination) {
-		if (sourse == null || destination == null) {
+		if(sourse == null || destination == null){
 			throw new IllegalArgumentException("Veretes should  be not null");
 		}
 		this.sourse = sourse;
@@ -42,13 +50,5 @@ public class Edge {
 	@Override
 	public String toString() {
 		return sourse + " -- " + destination;
-	}
-
-	public Vertex getSourse() {
-		return sourse;
-	}
-
-	public Vertex getDestination() {
-		return destination;
 	}
 }

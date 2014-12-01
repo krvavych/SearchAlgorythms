@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="test" project="SearchAlgorythms" tests="21" started="21" failures="0" errors="0" ignored="0">
+  <testsuite name="fielden.com.ua.serch.TestBfs" time="0.001">
+    <testcase name="Bfs_should_work_as_expected" classname="fielden.com.ua.serch.TestBfs" time="0.0"/>
+    <testcase name="Bfs_should_work_correctly" classname="fielden.com.ua.serch.TestBfs" time="0.0"/>
+  </testsuite>
+  <testsuite name="fielden.com.ua.serch.TestVertex" time="0.0">
+    <testcase name="the_same_vertexes_shoul_be_equal" classname="fielden.com.ua.serch.TestVertex" time="0.0"/>
+    <testcase name="different_verteces_should_have_different_hashCodes" classname="fielden.com.ua.serch.TestVertex" time="0.0"/>
+  </testsuite>
+  <testsuite name="fielden.com.ua.serch.TestGraph" time="0.0">
+    <testcase name="graph_created_by_builder_should_be_equal_to_hand_createg_graph" classname="fielden.com.ua.serch.TestGraph" time="0.0"/>
+    <testcase name="graph_should_not_have_edges_with_verteces_wich_donot_exist_in_setOfVertex" classname="fielden.com.ua.serch.TestGraph" time="0.0"/>
+    <testcase name="graph_should_not_have_null_set_of_verteces" classname="fielden.com.ua.serch.TestGraph" time="0.0"/>
+  </testsuite>
+  <testsuite name="fielden.com.ua.serch.TestEdge" time="0.0">
+    <testcase name="it_should_be_impossible_to_create_edges_with_null_vertexes" classname="fielden.com.ua.serch.TestEdge" time="0.0"/>
+    <testcase name="the_same_edge_should_be_equal" classname="fielden.com.ua.serch.TestEdge" time="0.0"/>
+    <testcase name="hashCodes_of_equal_vertexes_shoul_be_the_same" classname="fielden.com.ua.serch.TestEdge" time="0.0"/>
+  </testsuite>
+  <testsuite name="fielden.com.ua.serch.TestBuilder" time="0.0">
+    <testcase name="adjacency_list_should_be_create_correctly" classname="fielden.com.ua.serch.TestBuilder" time="0.0"/>
+    <testcase name="it_should_be_impossible_to_create_edgesOfVertev_from_wrond_data" classname="fielden.com.ua.serch.TestBuilder" time="0.0"/>
+    <testcase name="it_should_be_impossible_to_create_adjacrncy_list_from_wrong_input_data" classname="fielden.com.ua.serch.TestBuilder" time="0.0"/>
+    <testcase name="list_of_edges_of_vertex_should_be_create_correct" classname="fielden.com.ua.serch.TestBuilder" time="0.0"/>
+    <testcase name="graph_cannot_be_without_any_vertexes" classname="fielden.com.ua.serch.TestBuilder" time="0.0"/>
+    <testcase name="it_should_be_imposible_to_add_the_same_vertex" classname="fielden.com.ua.serch.TestBuilder" time="0.0"/>
+    <testcase name="it_should_be_impossible_to_build_graph_with_edge_vertexes_of_wich_not_egzist_in_setOfVertex" classname="fielden.com.ua.serch.TestBuilder" time="0.0"/>
+    <testcase name="it_should_be_impossible_to_add_edge_with_null_verteves" classname="fielden.com.ua.serch.TestBuilder" time="0.0"/>
+    <testcase name="it_should_be_imposible_to_add_the_same_edge" classname="fielden.com.ua.serch.TestBuilder" time="0.0"/>
+  </testsuite>
+  <testsuite name="fielden.com.ua.serch.TestDfs" time="0.0">
+    <testcase name="Dfs_should_work_as_expected" classname="fielden.com.ua.serch.TestDfs" time="0.0"/>
+    <testcase name="Dfs_should_work_correctly" classname="fielden.com.ua.serch.TestDfs" time="0.0"/>
+  </testsuite>
+</testrun>

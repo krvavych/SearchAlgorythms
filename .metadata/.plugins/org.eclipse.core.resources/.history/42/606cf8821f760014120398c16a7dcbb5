@@ -43,6 +43,11 @@ public class Vertex {
 		return element;
 	}
 
+	public Vertex setElement(final Object element) {
+		this.element = element;
+		return this;
+	}
+
 	@Override
 	public String toString() {
 		return id +" "+ this.element.toString();

@@ -39,8 +39,18 @@ public class Vertex {
 		return id;
 	}
 
+	public Vertex setId(final int id) {
+		this.id = id;
+		return this;
+	}
+
 	public Object getElement() {
 		return element;
+	}
+
+	public Vertex setElement(final Object element) {
+		this.element = element;
+		return this;
 	}
 
 	@Override
