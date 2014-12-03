@@ -5,8 +5,8 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import fielden.com.ua.search.Edge;
-import fielden.com.ua.search.Vertex;
+import ua.com.fielden.graph.Edge;
+import ua.com.fielden.graph.Vertex;
 
 public class TestEdge {
 

@@ -1,0 +1,18 @@
+package fielden.com.ua.search;
+
+
+public class FindCount implements IVertexVisitor {
+
+	private int count = 0;
+
+	@Override
+	public void visitor(final Vertex vertex) {
+		count = count + 1;
+	}
+
+	public int count() {
+		return count;
+	}
+
+}
+

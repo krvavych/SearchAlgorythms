@@ -1,0 +1,11 @@
+package fielden.com.ua.search;
+
+public class FindCount implements IVisitor {
+	public FindCount(){};
+
+	@Override
+	public void visitor(Vertex vertex) {
+		
+	}
+
+}

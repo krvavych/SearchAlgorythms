@@ -1,0 +1,6 @@
+package ua.com.fielden.graph;
+
+public interface IVertexVisitor {
+	void visit(final Vertex vertex);
+
+}

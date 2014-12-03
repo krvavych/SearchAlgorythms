@@ -1,0 +1,13 @@
+package ua.com.fielden.graph.visitors;
+
+import ua.com.fielden.graph.Vertex;
+
+public class VertexPrinter implements IVertexVisitor {
+
+	@Override
+	public void visit(Vertex vertex) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

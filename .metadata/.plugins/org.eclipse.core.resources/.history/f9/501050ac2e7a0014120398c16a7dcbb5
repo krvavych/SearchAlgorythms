@@ -1,0 +1,30 @@
+package fielden.com.ua.search;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class FindCount implements IVisitor {
+	public FindCount() {
+	};
+	
+	private final List<Integer> countList = new ArrayList<Integer>();
+	
+	@Override
+	public void visitor(final Vertex vertex) {
+		if(countList.isEmpty()){
+			countList.add(1);
+		} else { 
+			countList.add((countList.get(countList.size())-1)+1);
+		}
+	}
+	
+	public void printResult (final List<Integer> list){
+		System.out.println(list.get(list.size()-1).toString());
+	}
+
+	public List<Integer> getCountList() {
+		return countList;
+	}
+
+}
+

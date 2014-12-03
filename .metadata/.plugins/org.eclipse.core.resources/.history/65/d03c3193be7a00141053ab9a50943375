@@ -1,0 +1,51 @@
+package fielden.com.ua.serch;
+
+import org.junit.Test;
+
+import ua.com.fielden.graph.Builder;
+import ua.com.fielden.graph.Graph;
+import ua.com.fielden.graph.Vertex;
+import ua.com.fielden.graph.visitors.FindCount;
+
+public class TestBfs {
+
+	@Test
+	public void Bfs_should_work_correctly() {
+		final Builder builder = new Builder();
+		final Vertex v1 = new Vertex(1, "element1");
+		final Vertex v2 = new Vertex(2, "element2");
+		final Vertex v3 = new Vertex(3, "element3");
+		final Vertex v4 = new Vertex(4, "element4");
+		final Vertex v5 = new Vertex(5, "element5");
+		final Vertex v6 = new Vertex(6, "element6");
+		builder.addVertex(v1).addVertex(v2).addVertex(v3).addVertex(v4)
+				.addVertex(v5).addVertex(v6).addEdge(v1, v2).addEdge(v2, v1)
+				.addEdge(v3, v2).addEdge(v2, v3).addEdge(v4, v3)
+				.addEdge(v3, v4).addEdge(v2, v5).addEdge(v5, v2)
+				.addEdge(v6, v4).addEdge(v4, v6);
+		final Graph graph = builder.build();
+		final FindCount visitor = new FindCount();
+		
+		graph.bfs( v1, visitor);
+	}
+
+	@Test
+	public void Bfs_should_work_as_expected() {
+		final Builder builder = new Builder();
+		final Vertex v1 = new Vertex(1, "element1");
+		final Vertex v2 = new Vertex(2, "element2");
+		final Vertex v3 = new Vertex(3, "element3");
+		final Vertex v4 = new Vertex(4, "element4");
+		final Vertex v5 = new Vertex(5, "element5");
+		final Vertex v6 = new Vertex(6, "element6");
+		builder.addVertex(v1).addVertex(v2).addVertex(v3).addVertex(v4)
+				.addVertex(v5).addVertex(v6).addEdge(v1, v2).addEdge(v2, v1)
+				.addEdge(v3, v1).addEdge(v1, v3).addEdge(v4, v3)
+				.addEdge(v3, v4).addEdge(v3, v5).addEdge(v5, v3)
+				.addEdge(v6, v4).addEdge(v4, v6);
+		final Graph g = builder.build();
+		final FindCount visitor = new FindCount();
+		g.bfs( v1, visitor);
+	}
+
+}

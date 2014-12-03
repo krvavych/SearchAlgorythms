@@ -1,0 +1,19 @@
+package fielden.com.ua.search;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class FindCount implements IVisitor {
+	public FindCount(final Graph graph) {
+
+	};
+
+	@Override
+	public void visitor(final Vertex vertex) {
+		final List<Integer> countList = new ArrayList<Integer>();
+
+
+	}
+
+}
+

@@ -1,0 +1,20 @@
+package fielden.com.ua.search;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class FindCount implements IVisitor {
+
+	private int count = 0;
+
+	@Override
+	public void visitor(final Vertex vertex) {
+		count = count + 1;
+	}
+
+	public int count() {
+		return count;
+	}
+
+}
+

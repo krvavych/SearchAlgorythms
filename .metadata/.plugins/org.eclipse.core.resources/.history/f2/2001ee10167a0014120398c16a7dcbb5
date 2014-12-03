@@ -1,0 +1,125 @@
+package fielden.com.ua.serch;
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.junit.Test;
+
+import fielden.com.ua.search.Builder;
+import fielden.com.ua.search.Edge;
+import fielden.com.ua.search.Graph;
+import fielden.com.ua.search.Vertex;
+
+public class TestGraph {
+
+	@Test
+	public void graph_created_by_builder_should_be_equal_to_hand_createg_graph() {
+		final Set<Vertex> vertexs = new HashSet<Vertex>();
+		final Set<Edge> edges = new HashSet<Edge>();
+		final Vertex v1 = new Vertex(1, "element");
+		final Vertex v2 = new Vertex(2, "element");
+		vertexs.add(v1);
+		vertexs.add(v2);
+		edges.add(new Edge(v1, v2));
+		final Graph graph = new Graph(edges, vertexs);
+		final Builder builder = new Builder();
+		final Vertex v3 = builder.addVertex(1, "element");
+		final Vertex v4 = builder.addVertex(2, "element");
+		builder.addEdge(v3, v4);
+		final Graph buildGraph = builder.build();
+		assertTrue(graph.equals(buildGraph));
+		assertTrue(graph.hashCode() == buildGraph.hashCode());
+	}
+
+	@Test
+	public void graph_should_not_have_null_set_of_verteces() {
+		try {
+			new Graph(null, null);
+			fail();
+		} catch (final Exception e) {
+		}
+	}
+
+	@Test
+	public void graph_should_not_have_edges_with_verteces_wich_donot_exist_in_setOfVertex() {
+		final Set<Vertex> vertexs1 = new HashSet<Vertex>();
+		final Set<Edge> edges1 = new HashSet<Edge>();
+		final Vertex v1 = new Vertex(1, "element");
+		final Vertex v2 = new Vertex(2, "element");
+		final Vertex v3 = new Vertex(3, "element");
+		vertexs1.add(v1);
+		vertexs1.add(v2);
+		edges1.add(new Edge(v1, v2));
+		edges1.add(new Edge(v1, v3));
+		try {
+			new Graph(edges1, vertexs1);
+			fail();
+		} catch (final Exception e) {
+		}
+	}
+
+	@Test
+	public void adjacency_list_should_be_create_correctly() {
+		final Builder builder = new Builder();
+		final Vertex v1 = builder.addVertex(1, "element");
+		final Vertex v2 = builder.addVertex(2, "element");
+		final Vertex v3 = builder.addVertex(3, "element");
+		builder.addEdge(v1, v2).addEdge(v2, v1).addEdge(v3, v2).addEdge(v2, v3);
+		final Graph graph = builder.build();
+		graph.creationAdjacencyLists();
+		System.out.println(graph.getAdjacencyVertrxOfVertex().toString());
+		assertTrue((graph.getAdjacencyVertrxOfVertex().get(v2).contains(v1) && (graph
+				.getAdjacencyVertrxOfVertex().get(v2).contains(v3))));
+
+	}
+
+	@Test
+	public void list_of_edges_of_vertex_should_be_create_correct() {
+		final Builder builder = new Builder();
+		final Vertex v1 = builder.addVertex(1, "element");
+		final Vertex v2 = builder.addVertex(2, "element");
+		final Vertex v3 = builder.addVertex(3, "element");
+		final Edge e1 = new Edge(v2, v1);
+		final Edge e2 = new Edge(v2, v3);
+		builder.addEdge(v2, v1).addEdge(v3, v2).addEdge(v2, v3).addEdge(v1, v2);
+		final Graph g = builder.build();
+		g.creationEdgesOfVertex();
+		System.out.println(g.getEdgesOfVertex().toString());
+		assertTrue((g.getEdgesOfVertex().get(v2).contains(e1) && (g
+				.getEdgesOfVertex().get(v2).contains(e2))));
+
+	}
+
+	@Test
+	public void it_should_be_impossible_to_create_adjacrncy_list_from_wrong_input_data() {
+		final Builder builder = new Builder();
+		builder.addVertex(1, 1);
+		builder.addVertex(2, 2);
+		builder.addEdge(new Vertex(3, 3), new Vertex(4, 4));
+		final Graph graph = builder.build();
+		try {
+			graph.creationAdjacencyLists();
+			fail();
+		} catch (final Exception c) {
+
+		}
+	}
+
+	@Test
+	public void it_should_be_impossible_to_create_edgesOfVertev_from_wrond_data() {
+		final Builder builder = new Builder();
+		builder.addVertex(1, "element");
+		builder.addVertex(2, "element");
+		builder.addEdge(new Vertex(3, "element"), new Vertex(4, "element"));
+		try {
+			builder.creationEdgesOfVertex(builder.getEdgesOfMap(),
+					builder.getVertex(), builder.getEdges());
+			fail();
+		} catch (final Exception a) {
+		}
+	}
+
+}

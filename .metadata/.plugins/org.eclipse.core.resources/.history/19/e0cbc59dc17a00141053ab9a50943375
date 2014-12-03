@@ -1,0 +1,192 @@
+package ua.com.fielden.graph;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import ua.com.fielden.graph.visitors.FindCount;
+import ua.com.fielden.graph.visitors.IVertexVisitor;
+import ua.com.fielden.graph.visitors.VertexPrinter;
+
+public class Graph {
+	private final Set<Vertex> verteces;
+	private final Set<Edge> edges;
+	private Map<Vertex, Set<Edge>> edgesOfVertex;
+	private Map<Vertex, Set<Vertex>> adjacencyVertrxOfVertex;
+
+	public Graph(final Set<Edge> edges, final Set<Vertex> verteces) {
+		for (final Edge edge : edges) {
+			if (!verteces.contains(edge.getSourse())
+					|| !verteces.contains(edge.getDestination())) {
+				throw new IllegalArgumentException(
+						"Wrong data for graph building");
+			}
+		}
+		this.edges = edges;
+		this.verteces = verteces;
+		this.edgesOfVertex = creationEdgesOfVertex();
+		this.adjacencyVertrxOfVertex = creationAdjacencyLists();
+	}
+
+	public Map<Vertex, Set<Vertex>> creationAdjacencyLists() {
+		final Map<Vertex, Set<Vertex>> map = new HashMap<Vertex, Set<Vertex>>();
+		for (final Edge edge : edges) {
+			if (!verteces.contains(edge.getSourse())
+					|| !verteces.contains(edge.getDestination())) {
+				throw new IllegalArgumentException(
+						"Wrong sets of edges and vertexes");
+			}
+		}
+		for (final Vertex vertex : verteces) {
+			final Set<Vertex> adjacencyVertrxes = new HashSet<Vertex>();
+			for (final Edge edge : edges) {
+				if (edge.getSourse() == vertex) {
+					adjacencyVertrxes.add(edge.getDestination());
+				}
+			}
+			map.put(vertex, adjacencyVertrxes);
+		}
+		return map;
+	}
+
+	public Map<Vertex, Set<Edge>> creationEdgesOfVertex() {
+		final Map<Vertex, Set<Edge>> map = new HashMap<Vertex, Set<Edge>>();
+		for (final Edge edge : edges) {
+			if (!verteces.contains(edge.getSourse())
+					|| !verteces.contains(edge.getDestination())) {
+				throw new IllegalArgumentException(
+						"Wrong sets of edges and vertexes");
+			}
+		}
+		for (final Vertex vertex : verteces) {
+			final Set<Edge> edgesOfVertrxes = new HashSet<Edge>();
+			for (final Edge edge : edges) {
+				if (edge.getSourse() == vertex) {
+					edgesOfVertrxes.add(edge);
+				}
+			}
+			map.put(vertex, edgesOfVertrxes);
+		}
+		return map;
+	}
+
+	public List<Integer> dfs(final Vertex v, final IVertexVisitor visitor) {
+		final List<Integer> vertexList = new ArrayList<Integer>();
+		final Iterator<Vertex> graph = new DeapthFirstIterator(this, v);
+		for (; graph.hasNext();) {
+			final Vertex nextVertex = graph.next();
+			vertexList.add(nextVertex.getElement());
+			if (visitor != null) {
+				visitor.visit(nextVertex);
+			}
+		}return vertexList;
+	}
+
+	public List<Object> bfs(final Vertex v, final IVertexVisitor visitor) {
+		final List<Object> vertexList = new ArrayList<Object>();
+		final Iterator<Vertex> graph = new BreadthFirstIterator(this, v);
+		for (; graph.hasNext();) {
+			final Vertex nextVertex = graph.next();
+			vertexList.add(nextVertex.getElement());
+			if (visitor != null) {
+				visitor.visit(nextVertex);
+			}
+		}return vertexList;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime
+				* result
+				+ ((adjacencyVertrxOfVertex == null) ? 0
+						: adjacencyVertrxOfVertex.hashCode());
+		result = prime * result + ((edges == null) ? 0 : edges.hashCode());
+		result = prime * result
+				+ ((edgesOfVertex == null) ? 0 : edgesOfVertex.hashCode());
+		result = prime * result
+				+ ((verteces == null) ? 0 : verteces.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(final Object thatGraph) {
+		if (this == thatGraph) {
+			return true;
+		}
+		if (thatGraph == null) {
+			return false;
+		}
+		if (getClass() != thatGraph.getClass()) {
+			return false;
+		}
+		final Graph other = (Graph) thatGraph;
+		if (adjacencyVertrxOfVertex == null) {
+			if (other.adjacencyVertrxOfVertex != null) {
+				return false;
+			}
+		} else if (!adjacencyVertrxOfVertex
+				.equals(other.adjacencyVertrxOfVertex)) {
+			return false;
+		}
+		if (edges == null) {
+			if (other.edges != null) {
+				return false;
+			}
+		} else if (!edges.equals(other.edges)) {
+			return false;
+		}
+		if (edgesOfVertex == null) {
+			if (other.edgesOfVertex != null) {
+				return false;
+			}
+		} else if (!edgesOfVertex.equals(other.edgesOfVertex)) {
+			return false;
+		}
+		if (!verteces.equals(other.verteces)) {
+			return false;
+		}
+		return true;
+	}
+
+	public Set<Vertex> getVerteces() {
+		return verteces;
+	}
+
+	public Set<Edge> getEdges() {
+		return edges;
+	}
+
+	public Map<Vertex, Set<Edge>> getEdgesOfVertex() {
+		return edgesOfVertex;
+	}
+
+	public Map<Vertex, Set<Vertex>> getAdjacencyVertrxOfVertex() {
+		return adjacencyVertrxOfVertex;
+	}
+
+	public boolean contains(final Vertex vertex) {
+		return verteces.contains(vertex);
+	}
+
+	public static void main(final String[] args) {
+		final Builder builder = new Builder();
+		final Vertex v1 = new Vertex(1, "a");
+		final Vertex v2 = new Vertex(2, "b");
+		final Vertex v3 = new Vertex(3, "e");
+		final Vertex v4 = new Vertex(4, "c");
+		final Vertex v5 = new Vertex(5, "d");
+		final Graph g = builder.addVertex(v1).addVertex(v2).addVertex(v3)
+				.addVertex(v4).addVertex(v5).addEdge(v1, v2).addEdge(v2, v1)
+				.addEdge(v4, v3).addEdge(v3, v4).addEdge(v5, v4)
+				.addEdge(v4, v5).addEdge(v5, v3).addEdge(v3, v5).build();
+		final FindCount vCount = new FindCount();
+		g.bfs(v1, new VertexPrinter());
+		g.dfs(v1, vCount);
+	}
+}

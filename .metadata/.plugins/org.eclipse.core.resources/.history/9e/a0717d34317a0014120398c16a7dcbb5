@@ -1,0 +1,6 @@
+package fielden.com.ua.search;
+
+public interface IVertexVisitor {
+	void visit(final Vertex vertex);
+
+}
