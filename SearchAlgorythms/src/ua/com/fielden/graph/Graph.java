@@ -54,7 +54,7 @@ public class Graph {
 	}
 
 	public Map<Vertex, Set<Edge>> creationEdgesOfVertex() {
-		final Map<Vertex, Set<Edge>> map = new HashMap<Vertex, Set<Edge>>();
+		final Map<Vertex, Set<Edge>> map = new HashMap<>();
 		for (final Edge edge : edges) {
 			if (!verteces.contains(edge.getSourse())
 					|| !verteces.contains(edge.getDestination())) {
@@ -75,27 +75,27 @@ public class Graph {
 	}
 
 	public List<Integer> dfs(final Vertex v, final IVertexVisitor visitor) {
-		final List<Integer> vertexList = new ArrayList<Integer>();
-		final Iterator<Vertex> graph = new DeapthFirstIterator(this, v);
-		for (; graph.hasNext();) {
-			final Vertex nextVertex = graph.next();
+		final List<Integer> vertexList = new ArrayList<>();
+		for (final Iterator<Vertex> graph = new DeapthFirstIterator(this, v); graph.hasNext();) {
+			final Vertex nextVertex = ((DeapthFirstIterator) graph).next();
 			vertexList.add(nextVertex.getId());
 			if (visitor != null) {
 				visitor.visit(nextVertex);
 			}
-		}return vertexList;
+		}
+		return vertexList;
 	}
 
 	public List<Integer> bfs(final Vertex v, final IVertexVisitor visitor) {
-		final List<Integer> vertexList = new ArrayList<Integer>();
-		final Iterator<Vertex> graph = new BreadthFirstIterator(this, v);
-		for (; graph.hasNext();) {
+		final List<Integer> vertexList = new ArrayList<>();
+		for (final Iterator<Vertex> graph = new BreadthFirstIterator(this, v); graph.hasNext();) {
 			final Vertex nextVertex = graph.next();
 			vertexList.add(nextVertex.getId());
 			if (visitor != null) {
 				visitor.visit(nextVertex);
 			}
-		}return vertexList;
+		}
+		return vertexList;
 	}
 
 	@Override

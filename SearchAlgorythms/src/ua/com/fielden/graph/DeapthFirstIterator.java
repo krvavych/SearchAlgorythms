@@ -8,16 +8,14 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class DeapthFirstIterator implements Iterator<Vertex> {
-	private Set<Vertex> visited = new HashSet<Vertex>();
-	private Deque<Iterator<Vertex>> stack = new LinkedList<Iterator<Vertex>>();
+	private Set<Vertex> visited = new HashSet<>();
+	private Deque<Iterator<Vertex>> stack = new LinkedList<>();
 	private Graph graph;
 	private Vertex next;
 
 	public DeapthFirstIterator(final Graph g, final Vertex startingVertex) {
 		this.graph = g;
-		graph.creationAdjacencyLists();
-		this.stack.push(graph.getAdjacencyVertrxOfVertex().get(startingVertex)
-				.iterator());
+		this.stack.push(graph.getAdjacencyVertrxOfVertex().get(startingVertex).iterator());
 		this.next = startingVertex;
 	}
 
@@ -28,19 +26,18 @@ public class DeapthFirstIterator implements Iterator<Vertex> {
 
 	@Override
 	public boolean hasNext() {
-		return this.next != null;
+		return next != null;
 	}
 
 	@Override
 	public Vertex next() {
-		if (this.next == null) {
+		if (next == null) {
 			throw new NoSuchElementException();
-		}
-		try {
-			this.visited.add(this.next);
-			return this.next;
-		} finally {
-			this.advance();
+		} else{
+			visited.add(this.next);
+			final Vertex between = next;
+			advance();
+			return between;
 		}
 	}
 
