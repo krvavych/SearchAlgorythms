@@ -22,19 +22,16 @@ public class TestDfs {
 		final Vertex v3 = new Vertex(3, "c");
 		final Vertex v4 = new Vertex(4, "d");
 		final Vertex v5 = new Vertex(5, "e");
-		final Vertex v6 = new Vertex(6, "f");
 		builder.addEdge(v1, v2).addVertex(v1).addVertex(v2).addVertex(v3)
-				.addVertex(v4).addVertex(v5).addVertex(v6).addEdge(v2, v1)
+				.addVertex(v4).addVertex(v5).addEdge(v2, v1)
 				.addEdge(v3, v2).addEdge(v2, v3).addEdge(v4, v3)
-				.addEdge(v3, v4).addEdge(v2, v5).addEdge(v5, v2)
-				.addEdge(v6, v4).addEdge(v4, v6);
+				.addEdge(v3, v4).addEdge(v5, v4).addEdge(v4, v5);
 		final Graph graph = builder.build();
 		final List<Integer> list = new ArrayList<Integer>();
 		list.add(1);
 		list.add(2);
 		list.add(3);
 		list.add(4);
-		list.add(6);
 		list.add(5);
 		assertTrue(list.equals(graph.dfs(v1, new VertexPrinter())));
 

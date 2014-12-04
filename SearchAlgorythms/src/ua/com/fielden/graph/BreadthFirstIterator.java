@@ -35,7 +35,8 @@ public class BreadthFirstIterator implements Iterator<Vertex> {
 	@Override
 	public Vertex next() {
 		final Vertex next = queue.remove();
-		for (final Vertex neighbor : graph.getAdjacencyVertrxOfVertex().get(next)) {
+		for (final Vertex neighbor : graph.getAdjacencyVertrxOfVertex().get(
+				next)) {
 			if (!visited.contains(neighbor)) {
 				queue.add(neighbor);
 				visited.add(neighbor);

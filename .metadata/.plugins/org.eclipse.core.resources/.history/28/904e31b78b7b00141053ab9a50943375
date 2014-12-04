@@ -1,0 +1,81 @@
+package ua.com.fielden.graph;
+
+import java.util.Deque;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.NoSuchElementException;
+import java.util.Set;
+
+public class DeapthFirstIterator implements Iterator<Vertex> {
+	private Set<Vertex> visited = new HashSet<>();
+	private Deque<Iterator<Vertex>> stack = new LinkedList<>();
+	private Graph graph;
+	private Vertex next;
+
+	public DeapthFirstIterator(final Graph g, final Vertex startingVertex) {
+		this.graph = g;
+		this.stack.push(graph.getAdjacencyVertrxOfVertex().get(startingVertex)
+				.iterator());
+		this.next = startingVertex;
+	}
+
+	@Override
+	public void remove() {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public boolean hasNext() {
+		return next != null;
+	}
+
+	@Override
+	public Vertex next() {
+		if (next == null) {
+			throw new NoSuchElementException();
+		} else {
+			visited.add(this.next);
+			final Vertex between = next;
+			travel();
+			return between;
+		}
+	}
+
+	private void travel() {
+		for (Iterator<Vertex> neighbors = this.stack.peek(); neighbors
+				.hasNext();) {
+			next = neighbors.next();
+			if (visited.contains(next)) {
+				while (!neighbors.hasNext()) {
+					stack.pop();
+					if(!stack.isEmpty()) {
+						next= null;
+						return;
+					}
+					neighbors = stack.peek();
+				}
+			}this.stack.push(this.graph.getAdjacencyVertrxOfVertex().get(this.next)
+				.iterator());
+		}
+
+	}
+
+	private void advance() {
+		Iterator<Vertex> neighbors = this.stack.peek();
+		do {
+			while (!neighbors.hasNext()) {
+				this.stack.pop();
+				if (this.stack.isEmpty()) {
+					this.next = null;
+					return;
+				}
+				neighbors = this.stack.peek();
+			}
+
+			this.next = neighbors.next();
+		} while (this.visited.contains(this.next));
+		this.stack.push(this.graph.getAdjacencyVertrxOfVertex().get(this.next)
+				.iterator());
+	}
+}
