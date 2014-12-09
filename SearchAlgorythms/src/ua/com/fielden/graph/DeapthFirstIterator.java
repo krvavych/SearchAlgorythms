@@ -32,14 +32,15 @@ public class DeapthFirstIterator implements Iterator<Vertex> {
 
 	@Override
 	public Vertex next() {
+		final Vertex between;
 		if (next == null) {
 			throw new NoSuchElementException();
 		} else {
 			visited.add(this.next);
-			final Vertex between = next;
+			between = next;
 			travel();
-			return between;
 		}
+		return between;
 	}
 
 	private void travel() {

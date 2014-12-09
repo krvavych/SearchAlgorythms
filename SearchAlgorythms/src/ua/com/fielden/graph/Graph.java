@@ -8,9 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import ua.com.fielden.graph.visitors.FindCount;
 import ua.com.fielden.graph.visitors.IVertexVisitor;
-import ua.com.fielden.graph.visitors.VertexPrinter;
 
 public class Graph {
 	private final Set<Vertex> verteces;
@@ -183,10 +181,8 @@ public class Graph {
 		final Vertex v5 = new Vertex(5, "d");
 		final Graph g = builder.addVertex(v1).addVertex(v2).addVertex(v3)
 				.addVertex(v4).addVertex(v5).addEdge(v1, v2).addEdge(v2, v1)
-				.addEdge(v4, v3).addEdge(v3, v4).addEdge(v5, v4)
-				.addEdge(v4, v5).addEdge(v5, v3).addEdge(v3, v5).build();
-		final FindCount vCount = new FindCount();
-		g.bfs(v1, new VertexPrinter());
-		g.dfs(v1, vCount);
+				.addEdge(v2, v3).addEdge(v3, v2).addEdge(v2, v4)
+				.addEdge(v4, v2).addEdge(v5, v3).addEdge(v3, v5).build();
+		//new Search(g, v3, SearchBy.Bfs);
 	}
 }

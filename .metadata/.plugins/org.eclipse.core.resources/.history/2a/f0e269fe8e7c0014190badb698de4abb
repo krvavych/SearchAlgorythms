@@ -1,0 +1,37 @@
+package ua.com.fielden.graph;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Set;
+import java.util.Stack;
+
+public class Search {
+	private Graph graph;
+	private Set<Vertex> visited = new HashSet<>();
+	private Queue<Vertex> queue = new LinkedList();
+	private Stack<Vertex> stack = new Stack<Vertex>();
+
+	public Search(final Graph graph, final Vertex startVertex, final Queue<Vertex> queue) {
+		this.graph = graph;
+		this.queue = queue;
+		for (final Vertex vertex : graph.getVerteces()) {
+			if (vertex == startVertex) {
+				this.queue.add(vertex);
+				this.visited.add(vertex);
+			}
+		}
+	}
+
+	public Search(final Graph graph, final Vertex startVertex, final Stack<Vertex> stack) {
+		this.graph = graph;
+		this.stack = stack;
+		for (final Vertex vertex : graph.getVerteces()) {
+			if (vertex == startVertex) {
+				this.stack.add(vertex);
+				this.visited.add(vertex);
+			}
+		}
+	}
+}

@@ -1,0 +1,44 @@
+package ua.com.fielden.graph;
+
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Set;
+import java.util.Stack;
+
+public class Search {
+	private Graph graph;
+	private Set<Vertex> visited = new HashSet<>();
+	private Queue<Vertex> queue = new LinkedList();
+	private Stack<Vertex> stack = new Stack<Vertex>();
+	private SearchBy searchParameter;
+
+	public enum SearchBy{
+		Dfs, Bfs
+	}
+
+	public Search(final Graph graph, final Vertex startVertex, final SearchBy parameter ) {
+		this.searchParameter = parameter;
+		this.graph = graph;
+		for (final Vertex vertex : graph.getVerteces()) {
+			if (vertex == startVertex) {
+				if(searchParameter == SearchBy.Bfs){
+					this.queue.add(vertex);
+				} else if(searchParameter == SearchBy.Dfs){
+					this.stack.push(vertex);
+				}
+				this.visited.add(vertex);
+				System.out.println(vertex);
+			}
+		}
+		search(searchParameter);
+	}
+	
+	private void search(final SearchBy parameter){
+		if(parameter == SearchBy.Bfs){
+			while(!queue.isEmpty()){
+				Vertex vertex = queue.remove();
+			}
+		}
+	}
+}

@@ -1,0 +1,15 @@
+package ua.com.fielden.graph;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+public class Search implements Iterable {
+	private Set<Vertex> visited = new HashSet<>();
+	private Graph graph;
+
+	@Override
+	public Iterator iterator() {
+		return null;
+	}
+}

@@ -1,0 +1,18 @@
+package ua.com.fielden.graph;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Set;
+
+public class Search implements Iterable {
+	private Graph graph;
+	private Set<Vertex> visited = new HashSet<>();
+	private Queue<Vertex> queue = new LinkedList();
+
+	@Override
+	public Iterator iterator() {
+		return null;
+	}
+}

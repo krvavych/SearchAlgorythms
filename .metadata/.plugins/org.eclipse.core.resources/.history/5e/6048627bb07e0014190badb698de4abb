@@ -1,0 +1,67 @@
+package ua.com.fielden.graph;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Set;
+import java.util.Stack;
+
+public class Search {
+	private Graph graph;
+	private Set<Vertex> visited = new HashSet<>();
+	private Queue<Vertex> queue = new LinkedList();
+	private Stack<Vertex> stack = new Stack<Vertex>();
+	private SearchBy searchParameter;
+
+	public enum SearchBy{
+		Dfs, Bfs
+	}
+
+	public Search(final Graph graph, final Vertex startVertex, final SearchBy parameter ) {
+		this.searchParameter = parameter;
+		this.graph = graph;
+		for (final Vertex vertex : this.graph.getVerteces()) {
+			if (vertex == startVertex) {
+				if(searchParameter == SearchBy.Bfs){
+					this.queue.add(vertex);
+				} else if(searchParameter == SearchBy.Dfs){
+					this.stack.push(vertex);
+				}
+				this.visited.add(vertex);
+				System.out.println(vertex);
+			}
+		}
+		search(searchParameter);
+	}
+
+	private void search(final SearchBy parameter){
+		if(parameter == SearchBy.Bfs){
+			while(!queue.isEmpty()){
+				final Vertex vertex = queue.remove();
+				for(final Iterator<Vertex> iter = graph.getAdjacencyVertrxOfVertex().get(vertex).iterator();iter.hasNext();){
+					final Vertex next = iter.next();
+					if(!visited.contains(next)){
+						System.out.println(next);
+						visited.add(next);
+						queue.add(next);
+					}
+				}
+			}
+		}else if(parameter == SearchBy.Dfs){
+			while(!stack.isEmpty()){
+				final Vertex vertex = stack.peek();
+				for(final Iterator<Vertex> iter = graph.getAdjacencyVertrxOfVertex().get(vertex).iterator();iter.hasNext();){
+					final Vertex next = iter.next();
+					if(!visited.contains(next)){
+						System.out.println(next);
+						visited.add(next);
+						stack.push(next);
+					}else {
+						stack.pop();
+					}
+				}
+			}
+		}
+	}
+}

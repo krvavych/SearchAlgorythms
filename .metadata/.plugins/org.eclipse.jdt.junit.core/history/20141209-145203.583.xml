@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestForSearch.bfs_search_should_work_correctly" project="SearchAlgorythms" tests="1" started="1" failures="0" errors="1" ignored="0">
+  <testcase name="bfs_search_should_work_correctly" classname="ua.con.fielden.tests.TestForSearch" incomplete="true"/>
+  <testsuite name="Unrooted Tests" time="0.001">
+    <testcase name="initializationError" classname="org.junit.runner.manipulation.Filter" time="0.001">
+      <error>java.lang.Exception: No tests found matching Method bfs_search_should_work_correctly(ua.con.fielden.tests.TestForSearch) from org.junit.internal.requests.ClassRequest@17a7cec2
+	at org.junit.internal.requests.FilterRequest.getRunner(FilterRequest.java:35)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.&lt;init&gt;(JUnit4TestReference.java:33)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestMethodReference.&lt;init&gt;(JUnit4TestMethodReference.java:25)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestLoader.createTest(JUnit4TestLoader.java:54)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestLoader.loadTests(JUnit4TestLoader.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:444)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+
+</error>
+    </testcase>
+  </testsuite>
+</testrun>
