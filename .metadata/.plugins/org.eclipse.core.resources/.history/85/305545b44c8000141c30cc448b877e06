@@ -31,12 +31,11 @@ public class TestForSearch {
 		list.add(v3);
 		list.add(v5);
 		list.add(v2);
-		list.add(v4);
 		list.add(v1);
-		final Iterator<Vertex> iter = list.iterator();
+		list.add(v4);
 		final Search a = new Search(g, SearchBy.Dfs, v3);
-		for (final Vertex vertex : a) {
-			assertEquals(iter.next(), vertex);
+		for (Vertex vertex : a) {
+			assertEquals(list,vertex);
 		}
 	}
 
@@ -59,8 +58,8 @@ public class TestForSearch {
 		list.add(v5);
 		list.add(v1);
 		list.add(v4);
-		final Iterator<Vertex> iter = list.iterator();
-		for (final Vertex vertex : a) {
+		final Iterator iter = list.iterator();
+		for (Vertex vertex : a) {
 			assertEquals(iter.next(), vertex);
 		}
 	}

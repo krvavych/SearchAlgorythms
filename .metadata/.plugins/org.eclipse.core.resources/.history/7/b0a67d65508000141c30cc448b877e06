@@ -24,17 +24,16 @@ public class Search implements Iterable<Vertex> {
 		this.searchParameter = parameter;
 		this.startingVertex = startingVertex;
 	}
-
 	@Override
 	public Iterator<Vertex> iterator() {
-		if (searchParameter == SearchBy.Bfs) {
+		if(searchParameter==SearchBy.Bfs){
 			return new BfsIterator();
 		} else {
 			return new DfsIterator();
 		}
 	}
 
-	public class BfsIterator implements Iterator<Vertex> {
+	public class BfsIterator implements Iterator<Vertex>{
 
 		public BfsIterator() {
 			for (final Vertex vertex : graph.getVerteces()) {
@@ -58,7 +57,8 @@ public class Search implements Iterable<Vertex> {
 		@Override
 		public Vertex next() {
 			final Vertex next = queue.remove();
-			for (final Vertex neighbor : graph.getAdjacencyVertrxOfVertex().get(next)) {
+			for (final Vertex neighbor : graph.getAdjacencyVertrxOfVertex().get(
+					next)) {
 				if (!visited.contains(neighbor)) {
 					queue.add(neighbor);
 					visited.add(neighbor);
@@ -69,7 +69,7 @@ public class Search implements Iterable<Vertex> {
 
 	}
 
-	public class DfsIterator implements Iterator<Vertex> {
+	public class DfsIterator implements Iterator<Vertex>{
 
 		public DfsIterator() {
 			for (final Vertex vertex : graph.getVerteces()) {
@@ -93,7 +93,8 @@ public class Search implements Iterable<Vertex> {
 		@Override
 		public Vertex next() {
 			final Vertex next = stack.pop();
-			for (final Vertex neighbor : graph.getAdjacencyVertrxOfVertex().get(next)) {
+			for (final Vertex neighbor : graph.getAdjacencyVertrxOfVertex().get(
+					next)) {
 				if (!visited.contains(neighbor)) {
 					stack.add(neighbor);
 					visited.add(neighbor);

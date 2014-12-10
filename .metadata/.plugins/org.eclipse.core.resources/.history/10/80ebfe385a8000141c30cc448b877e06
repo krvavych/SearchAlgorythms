@@ -1,6 +1,5 @@
 package ua.com.fielden.graph;
 
-
 public class Vertex {
 	private Object element;
 	private int id;
@@ -10,15 +9,6 @@ public class Vertex {
 		this.id = id;
 	}
 
-	public int compare(final Vertex obj){
-		if(this.getId()==obj.getId()){
-			return 0;
-		}else if(this.getId()<obj.getId()){
-			return -1;
-		}else{
-			return 1;
-		}
-	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

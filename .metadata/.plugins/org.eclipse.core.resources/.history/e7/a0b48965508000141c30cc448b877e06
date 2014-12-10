@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
+import java.util.stream.Stream;
 
 public class Search implements Iterable<Vertex> {
 	private Graph graph;
@@ -19,7 +20,8 @@ public class Search implements Iterable<Vertex> {
 		Dfs, Bfs
 	}
 
-	public Search(final Graph g, final SearchBy parameter, final Vertex startingVertex) {
+	public Search(final Graph g, final SearchBy parameter,
+			final Vertex startingVertex) {
 		this.graph = g;
 		this.searchParameter = parameter;
 		this.startingVertex = startingVertex;
@@ -58,7 +60,8 @@ public class Search implements Iterable<Vertex> {
 		@Override
 		public Vertex next() {
 			final Vertex next = queue.remove();
-			for (final Vertex neighbor : graph.getAdjacencyVertrxOfVertex().get(next)) {
+			for (final Vertex neighbor : graph.getAdjacencyVertrxOfVertex()
+					.get(next)) {
 				if (!visited.contains(neighbor)) {
 					queue.add(neighbor);
 					visited.add(neighbor);
@@ -93,7 +96,8 @@ public class Search implements Iterable<Vertex> {
 		@Override
 		public Vertex next() {
 			final Vertex next = stack.pop();
-			for (final Vertex neighbor : graph.getAdjacencyVertrxOfVertex().get(next)) {
+			for (final Vertex neighbor : graph.getAdjacencyVertrxOfVertex()
+					.get(next)) {
 				if (!visited.contains(neighbor)) {
 					stack.add(neighbor);
 					visited.add(neighbor);

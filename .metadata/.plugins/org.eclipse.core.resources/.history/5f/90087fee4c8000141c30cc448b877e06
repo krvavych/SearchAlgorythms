@@ -29,10 +29,10 @@ public class TestForSearch {
 				.addEdge(v4, v2).addEdge(v5, v3).addEdge(v3, v5).build();
 		final LinkedList<Vertex> list = new LinkedList<>();
 		list.add(v3);
-		list.add(v5);
 		list.add(v2);
-		list.add(v4);
+		list.add(v5);
 		list.add(v1);
+		list.add(v4);
 		final Iterator<Vertex> iter = list.iterator();
 		final Search a = new Search(g, SearchBy.Dfs, v3);
 		for (final Vertex vertex : a) {

@@ -2,7 +2,6 @@ package ua.con.fielden.tests;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 
 import org.junit.Test;
@@ -28,16 +27,13 @@ public class TestForSearch {
 				.addEdge(v2, v3).addEdge(v3, v2).addEdge(v2, v4)
 				.addEdge(v4, v2).addEdge(v5, v3).addEdge(v3, v5).build();
 		final LinkedList<Vertex> list = new LinkedList<>();
-		list.add(v3);
 		list.add(v5);
-		list.add(v2);
-		list.add(v4);
 		list.add(v1);
-		final Iterator<Vertex> iter = list.iterator();
+		list.add(v4);
+		list.add(v2);
+		list.add(v3);
 		final Search a = new Search(g, SearchBy.Dfs, v3);
-		for (final Vertex vertex : a) {
-			assertEquals(iter.next(), vertex);
-		}
+		assertEquals(list,a.search(g, v3, SearchBy.Dfs));
 	}
 
 	@Test
@@ -59,10 +55,7 @@ public class TestForSearch {
 		list.add(v5);
 		list.add(v1);
 		list.add(v4);
-		final Iterator<Vertex> iter = list.iterator();
-		for (final Vertex vertex : a) {
-			assertEquals(iter.next(), vertex);
-		}
+		assertEquals(list,a.search(g, v3, SearchBy.Bfs));
 	}
 
 }

@@ -191,6 +191,7 @@ public class Graph {
 		final LinkedList<Vertex> list = new LinkedList<Vertex>();
 		for (final Vertex vertex : searching) {
 			list.add(vertex);
+			// System.out.println(vertex);
 		}
 		list
 		.stream()

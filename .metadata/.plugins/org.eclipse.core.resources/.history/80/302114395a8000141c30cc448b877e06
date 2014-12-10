@@ -1,5 +1,6 @@
 package ua.com.fielden.graph;
 
+import java.util.Comparator;
 
 public class Vertex {
 	private Object element;
@@ -10,7 +11,7 @@ public class Vertex {
 		this.id = id;
 	}
 
-	public int compare(final Vertex obj){
+	public int compare(Vertex obj){
 		if(this.getId()==obj.getId()){
 			return 0;
 		}else if(this.getId()<obj.getId()){
