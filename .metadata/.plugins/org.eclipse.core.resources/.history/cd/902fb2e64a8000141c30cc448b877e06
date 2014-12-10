@@ -184,7 +184,7 @@ public class Graph {
 				.addVertex(v4).addVertex(v5).addEdge(v1, v2).addEdge(v2, v1)
 				.addEdge(v2, v3).addEdge(v3, v2).addEdge(v5, v4)
 				.addEdge(v4, v5).addEdge(v5, v3).addEdge(v3, v5).build();
-		final Search a = new Search(g, SearchBy.Bfs, v3);
+		final Search a = new Search(g, SearchBy.Dfs, v3);
 		//a.search(g, v3, SearchBy.Bfs);
 		for (final Vertex vertex : a) {
 			System.out.println(vertex);

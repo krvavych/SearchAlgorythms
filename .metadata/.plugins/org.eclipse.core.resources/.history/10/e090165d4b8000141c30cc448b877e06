@@ -102,5 +102,7 @@ public class Search implements Iterable<Vertex> {
 			}
 			return next;
 		}
+
+
 	}
 }
