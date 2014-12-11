@@ -1,0 +1,8 @@
+package ua.com.fielden.graph.structure;
+
+import ua.com.fielden.graph.Vertex;
+
+public interface MyQueue {
+	void push(Vertex vertex);
+	void pop();
+}

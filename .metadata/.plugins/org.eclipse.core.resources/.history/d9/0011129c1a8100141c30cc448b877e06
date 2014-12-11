@@ -19,7 +19,8 @@ public class Search implements Iterable<Vertex> {
 		Dfs, Bfs
 	}
 
-	public Search(final Graph g, final SearchBy parameter, final Vertex startingVertex) {
+	public Search(final Graph g, final SearchBy parameter,
+			final Vertex startingVertex) {
 		this.graph = g;
 		this.searchParameter = parameter;
 		this.startingVertex = startingVertex;

@@ -11,6 +11,7 @@ import java.util.Set;
 
 import ua.com.fielden.graph.Search.SearchBy;
 import ua.com.fielden.graph.visitors.IVertexVisitor;
+import ua.com.fielden.graph.visitors.VertexPrinter;
 
 public class Graph {
 	private final Set<Vertex> verteces;

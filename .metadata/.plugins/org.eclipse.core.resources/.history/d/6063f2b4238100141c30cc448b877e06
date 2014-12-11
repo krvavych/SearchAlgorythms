@@ -1,0 +1,17 @@
+package ua.com.fielden.graph.structure;
+
+public class FifoQueue implements MyQueue {
+
+	@Override
+	public void push() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void pop() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

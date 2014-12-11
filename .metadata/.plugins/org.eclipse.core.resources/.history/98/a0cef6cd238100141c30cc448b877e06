@@ -1,0 +1,17 @@
+package ua.com.fielden.graph.structure;
+
+import ua.com.fielden.graph.Vertex;
+
+public class FiloQueue implements MyQueue {
+
+	@Override
+	public void push(Vertex vertex) {
+
+	}
+
+	@Override
+	public void pop() {
+
+	}
+
+}

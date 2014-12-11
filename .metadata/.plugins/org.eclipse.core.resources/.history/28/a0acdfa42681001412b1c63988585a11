@@ -1,0 +1,21 @@
+package ua.com.fielden.graph.structure;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+import ua.com.fielden.graph.Vertex;
+
+public class FifoQueue implements MyQueue {
+	final Queue<Vertex> q = new LinkedList<>();
+
+	@Override
+	public void push(Vertex vertex) {
+
+	}
+
+	@Override
+	public void pop() {
+
+	}
+
+}

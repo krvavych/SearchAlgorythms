@@ -194,9 +194,7 @@ public class Graph {
 		}
 		list
 		.stream()
-		.filter(s -> s.getId() >2)
-		.map(s ->s.getElement().toString())
-		.map(String::toUpperCase)
+		.filter(s -> s.getId() > 3)
 		.forEach(System.out::println);
 	}
 }
