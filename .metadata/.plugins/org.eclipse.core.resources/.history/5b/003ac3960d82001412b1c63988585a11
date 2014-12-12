@@ -202,5 +202,6 @@ public class Graph {
 		.map(String::toUpperCase)
 		.count();
 		System.out.println(count);
+		System.out.println(findCount.count());
 	}
 }

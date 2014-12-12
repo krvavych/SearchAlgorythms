@@ -194,13 +194,13 @@ public class Graph {
 		for (final Vertex vertex : searching) {
 			list.add(vertex);
 		}
-		final long count = list.stream()
+		list.stream()
 		.filter(s -> s.getId() > 2)
 		.limit(1)
 		.map(s -> s.getElement()
 		.toString())
 		.map(String::toUpperCase)
 		.count();
-		System.out.println(count);
+		System.out.println(findCount.count());
 	}
 }

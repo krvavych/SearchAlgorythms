@@ -196,11 +196,12 @@ public class Graph {
 		}
 		final long count = list.stream()
 		.filter(s -> s.getId() > 2)
-		.limit(1)
+		//.limit(1)
 		.map(s -> s.getElement()
 		.toString())
 		.map(String::toUpperCase)
 		.count();
 		System.out.println(count);
+		System.out.println(findCount.count());
 	}
 }

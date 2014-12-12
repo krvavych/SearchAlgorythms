@@ -34,7 +34,7 @@ public class TestForSearch {
 		list.add(v4);
 		list.add(v1);
 		final Iterator<Vertex> iter = list.iterator();
-		final Search a = new Search(g, SearchBy.Dfs, v3,null);
+		final Search a = new Search(g, SearchBy.Dfs, v3);
 		for (final Vertex vertex : a) {
 			assertEquals(iter.next(), vertex);
 		}

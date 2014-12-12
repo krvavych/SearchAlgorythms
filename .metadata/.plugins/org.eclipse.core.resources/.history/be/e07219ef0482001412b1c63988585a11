@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.Set;
 
 import ua.com.fielden.graph.Search.SearchBy;
-import ua.com.fielden.graph.visitors.FindCount;
 import ua.com.fielden.graph.visitors.IVertexVisitor;
 
 public class Graph {
@@ -188,19 +187,16 @@ public class Graph {
 				.addVertex(v4).addVertex(v5).addEdge(v1, v2).addEdge(v2, v1)
 				.addEdge(v2, v3).addEdge(v3, v2).addEdge(v5, v4)
 				.addEdge(v4, v5).addEdge(v5, v3).addEdge(v3, v5).build();
-		final FindCount findCount = new FindCount();
-		final Search searching = new Search(g, SearchBy.Bfs, v3, findCount);
+		final Search searching = new Search(g, SearchBy.Bfs, v3);
 		final LinkedList<Vertex> list = new LinkedList<Vertex>();
 		for (final Vertex vertex : searching) {
 			list.add(vertex);
 		}
-		final long count = list.stream()
-		.filter(s -> s.getId() > 2)
-		.limit(1)
-		.map(s -> s.getElement()
-		.toString())
+		list
+		.stream()
+		.filter(s -> s.getId() >2)
+		.map(s ->s.getElement().toString())
 		.map(String::toUpperCase)
-		.count();
-		System.out.println(count);
+		.forEach(System.out::println);
 	}
 }

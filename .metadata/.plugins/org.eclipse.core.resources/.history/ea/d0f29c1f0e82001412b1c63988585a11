@@ -1,5 +1,6 @@
 package ua.com.fielden.graph;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -10,10 +11,10 @@ import ua.com.fielden.graph.structure.IQueue;
 import ua.com.fielden.graph.visitors.IVertexVisitor;
 
 public class Search implements Iterable<Vertex> {
-	private final Graph graph;
-	private final SearchBy searchParameter;
-	private final Vertex startingVertex;
-	private final IVertexVisitor visitor;
+	private  Graph graph;
+	private  SearchBy searchParameter;
+	private  Vertex startingVertex;
+	private IVertexVisitor visitor;
 
 	public enum SearchBy {
 		Dfs, Bfs
@@ -31,19 +32,19 @@ public class Search implements Iterable<Vertex> {
 		return new SearchIterator();
 	}
 
-	private class SearchIterator implements Iterator<Vertex> {
-		public  final IQueue queue;
+	private static class SearchIterator implements Iterator<Vertex> {
+		public  final IQueue q;
 		public  final Set<Vertex> visited = new HashSet<>();
 
 		private SearchIterator() {
 			if (searchParameter == SearchBy.Bfs) {
-				queue = new FifoQueue();
+				q = new FifoQueue();
 			} else {
-				queue = new FiloQueue();
+				q = new FiloQueue();
 			}
 			for (final Vertex vertex : graph.getVerteces()) {
 				if (vertex == startingVertex) {
-					queue.push(vertex);
+					q.push(vertex);
 					visited.add(vertex);
 				}
 			}
@@ -57,15 +58,15 @@ public class Search implements Iterable<Vertex> {
 
 		@Override
 		public boolean hasNext() {
-			return !queue.isEmpty();
+			return !q.isEmpty();
 		}
 
 		@Override
 		public Vertex next() {
-			final Vertex next = queue.pop();
+			final Vertex next = q.pop();
 			for (final Vertex neighbor : graph.getAdjacencyVertrxOfVertex().get(next)) {
 				if (!visited.contains(neighbor)) {
-					queue.push(neighbor);
+					q.push(neighbor);
 					visited.add(neighbor);
 				}
 			}
@@ -75,4 +76,5 @@ public class Search implements Iterable<Vertex> {
 			return next;
 		}
 	}
+	Comparator<Vertex> comparator = (a,b) -> a.compare(b);
 }

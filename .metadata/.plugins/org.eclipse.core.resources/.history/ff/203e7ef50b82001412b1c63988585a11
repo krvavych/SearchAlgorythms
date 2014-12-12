@@ -189,18 +189,19 @@ public class Graph {
 				.addEdge(v2, v3).addEdge(v3, v2).addEdge(v5, v4)
 				.addEdge(v4, v5).addEdge(v5, v3).addEdge(v3, v5).build();
 		final FindCount findCount = new FindCount();
-		final Search searching = new Search(g, SearchBy.Bfs, v3, findCount);
+		final Search searching = new Search(g, SearchBy.Bfs, v3,findCount);
 		final LinkedList<Vertex> list = new LinkedList<Vertex>();
 		for (final Vertex vertex : searching) {
 			list.add(vertex);
 		}
-		final long count = list.stream()
-		.filter(s -> s.getId() > 2)
-		.limit(1)
-		.map(s -> s.getElement()
-		.toString())
-		.map(String::toUpperCase)
-		.count();
-		System.out.println(count);
+		list
+		.stream()
+		//.limit(1)
+		.filter(s -> s.getId() >2);
+//
+//		.map(s ->s.getElement().toString())
+//		.map(String::toUpperCase)
+//		.forEach(System.out::println);
+//		System.out.println(findCount.count());
 	}
 }
