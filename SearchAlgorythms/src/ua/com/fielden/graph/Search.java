@@ -2,24 +2,22 @@ package ua.com.fielden.graph;
 
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Set;
-import java.util.Stack;
+
+import ua.com.fielden.graph.structure.FifoQueue;
+import ua.com.fielden.graph.structure.FiloQueue;
+import ua.com.fielden.graph.structure.IQueue;
 
 public class Search implements Iterable<Vertex> {
-	private Graph graph;
-	private Set<Vertex> visited = new HashSet<>();
-	private Queue<Vertex> queue = new LinkedList<>();
-	private Stack<Vertex> stack = new Stack<>();
-	private SearchBy searchParameter;
-	private Vertex startingVertex;
+	private  Graph graph;
+	private  SearchBy searchParameter;
+	private  Vertex startingVertex;
 
 	public enum SearchBy {
 		Dfs, Bfs
 	}
 
-	public Search(final Graph g, final SearchBy parameter, final Vertex startingVertex) {
+	public Search(final Graph g, final SearchBy parameter,final Vertex startingVertex) {
 		this.graph = g;
 		this.searchParameter = parameter;
 		this.startingVertex = startingVertex;
@@ -27,23 +25,26 @@ public class Search implements Iterable<Vertex> {
 
 	@Override
 	public Iterator<Vertex> iterator() {
-		return new BfsOrDfsIterator();
+		return new SearchIterator();
 	}
 
-	public class BfsOrDfsIterator implements Iterator<Vertex> {
-		private Vertex next;
+	private class SearchIterator implements Iterator<Vertex> {
+		public  IQueue q;
+		public  Set<Vertex> visited = new HashSet<>();
 
-		public BfsOrDfsIterator() {
+		private SearchIterator() {
+			if (searchParameter == SearchBy.Bfs) {
+				q = new FifoQueue();
+			} else {
+				q = new FiloQueue();
+			}
 			for (final Vertex vertex : graph.getVerteces()) {
 				if (vertex == startingVertex) {
-					if (searchParameter == SearchBy.Bfs) {
-						queue.add(vertex);
-					} else {
-						stack.add(vertex);
-					}
+					q.push(vertex);
 					visited.add(vertex);
 				}
 			}
+
 		}
 
 		@Override
@@ -53,27 +54,15 @@ public class Search implements Iterable<Vertex> {
 
 		@Override
 		public boolean hasNext() {
-			if (searchParameter == SearchBy.Bfs) {
-				return !queue.isEmpty();
-			} else {
-				return !stack.isEmpty();
-			}
+			return !q.isEmpty();
 		}
 
 		@Override
 		public Vertex next() {
-			if (searchParameter == SearchBy.Bfs) {
-				next = queue.remove();
-			} else {
-				next = stack.pop();
-			}
+			final Vertex next = q.pop();
 			for (final Vertex neighbor : graph.getAdjacencyVertrxOfVertex().get(next)) {
 				if (!visited.contains(neighbor)) {
-					if(searchParameter == SearchBy.Bfs){
-						queue.add(neighbor);
-					} else {
-						stack.add(neighbor);
-					}
+					q.push(neighbor);
 					visited.add(neighbor);
 				}
 			}

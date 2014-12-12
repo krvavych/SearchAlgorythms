@@ -4,11 +4,11 @@ import java.util.Stack;
 
 import ua.com.fielden.graph.Vertex;
 
-public class FiloQueue implements MyQueue {
+public class FiloQueue implements IQueue {
 	final private Stack<Vertex> stack = new Stack<>();
 
 	@Override
-	public FiloQueue add(final Vertex vertex) {
+	public FiloQueue push(final Vertex vertex) {
 		stack.push(vertex);
 		return this;
 	}
@@ -19,9 +19,8 @@ public class FiloQueue implements MyQueue {
 	}
 
 	@Override
-	public FiloQueue remove() {
-		stack.pop();
-		return this;
+	public Vertex pop() {
+		return stack.pop();
 	}
 
 }

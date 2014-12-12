@@ -64,5 +64,28 @@ public class TestForSearch {
 			assertEquals(iter.next(), vertex);
 		}
 	}
+	@ Test
+	public void iterator_should_work_as_expected(){
+		final Builder builder = new Builder();
+		final Vertex v1 = new Vertex(1, "a");
+		final Vertex v2 = new Vertex(2, "b");
+		final Vertex v3 = new Vertex(3, "e");
+		final Vertex v4 = new Vertex(4, "c");
+		final Vertex v5 = new Vertex(5, "d");
+		final Graph g = builder.addVertex(v1).addVertex(v2).addVertex(v3)
+				.addVertex(v4).addVertex(v5).addEdge(v1, v2).addEdge(v2, v1)
+				.addEdge(v2, v3).addEdge(v3, v2).addEdge(v2, v4)
+				.addEdge(v4, v2).addEdge(v5, v3).addEdge(v3, v5).build();
+		final Search search = new Search(g, SearchBy.Bfs, v1);
+		final Iterator<Vertex> iter1 = search.iterator();
+		final Iterator<Vertex> iter2 = search.iterator();
+		final Vertex i1v1 = iter1.next();
 
+		for (; iter1.hasNext();) {
+			iter1.next();
+		}
+
+		final Vertex i2v1 = iter2.next();
+		assertEquals(i1v1, i2v1);
+	}
 }

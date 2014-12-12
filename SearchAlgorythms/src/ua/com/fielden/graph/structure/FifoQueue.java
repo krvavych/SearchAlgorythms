@@ -5,11 +5,11 @@ import java.util.Queue;
 
 import ua.com.fielden.graph.Vertex;
 
-public class FifoQueue implements MyQueue {
+public class FifoQueue implements IQueue {
 	final Queue<Vertex> q = new LinkedList<>();
 
 	@Override
-	public FifoQueue add(final Vertex vertex) {
+	public FifoQueue push(final Vertex vertex) {
 		q.add(vertex);
 		return this;
 	}
@@ -20,9 +20,8 @@ public class FifoQueue implements MyQueue {
 	}
 
 	@Override
-	public FifoQueue remove() {
-		q.remove();
-		return this;
+	public Vertex pop() {
+		return q.remove();
 	}
 
 }

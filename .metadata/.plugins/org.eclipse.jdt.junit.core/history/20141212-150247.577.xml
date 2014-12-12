@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestForSearch" project="SearchAlgorythms" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="ua.con.fielden.tests.TestForSearch" time="0.009">
+    <testcase name="bfs_search_should_work_correctly" classname="ua.con.fielden.tests.TestForSearch" time="0.005"/>
+    <testcase name="dfs_search_should_work_correctly" classname="ua.con.fielden.tests.TestForSearch" time="0.002"/>
+    <testcase name="iterator_should_work_as_expected" classname="ua.con.fielden.tests.TestForSearch" time="0.002"/>
+  </testsuite>
+</testrun>

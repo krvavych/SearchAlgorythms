@@ -983,3 +983,6 @@ Binding(ALT+CTRL+P,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2014-12-12 13:39:07.016
+!MESSAGE Can't handle %s as parent of completion location.

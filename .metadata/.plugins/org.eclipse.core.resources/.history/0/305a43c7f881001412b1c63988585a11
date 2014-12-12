@@ -1,0 +1,72 @@
+package ua.com.fielden.graph;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+import ua.com.fielden.graph.structure.FifoQueue;
+import ua.com.fielden.graph.structure.FiloQueue;
+import ua.com.fielden.graph.structure.IQueue;
+
+public class Search implements Iterable<Vertex> {
+	private Graph graph;
+	private Set<Vertex> visited = new HashSet<>();
+	private SearchBy searchParameter;
+	private Vertex startingVertex;
+	private IQueue q;
+
+	public enum SearchBy {
+		Dfs, Bfs
+	}
+
+	public Search(final Graph g, final SearchBy parameter, final Vertex startingVertex) {
+		this.graph = g;
+		this.searchParameter = parameter;
+		this.startingVertex = startingVertex;
+		if(this.searchParameter == SearchBy.Bfs){
+			this.q = new FifoQueue();
+		}else {
+			this.q = new FiloQueue();
+		}
+	}
+
+	@Override
+	public Iterator<Vertex> iterator() {
+		return new SearchIterator();
+	}
+
+	private class SearchIterator implements Iterator<Vertex> {
+		private Vertex next;
+
+		public SearchIterator() {
+			for (final Vertex vertex : graph.getVerteces()) {
+				if (vertex == startingVertex) {
+					q.push(vertex);
+					visited.add(vertex);
+				}
+			}
+		}
+
+		@Override
+		public void remove() {
+			throw new UnsupportedOperationException();
+		}
+
+		@Override
+		public boolean hasNext() {
+				return !q.isEmpty();
+		}
+
+		@Override
+		public Vertex next() {
+				next = q.pop();
+			for (final Vertex neighbor : graph.getAdjacencyVertrxOfVertex().get(next)) {
+				if (!visited.contains(neighbor)) {
+					q.push(neighbor);
+					visited.add(neighbor);
+				}
+			}
+			return next;
+		}
+	}
+}
